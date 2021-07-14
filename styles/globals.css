@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.welcome {
+  @apply text-5xl text-green-300;
+}
+
+.navigation {
+  @apply bg-black
+    w-full
+    font-elsie
+    justify-center
+    sm:justify-start
+    text-2xl
+    flex
+    align-baseline
+    text-gray-300
+      p-5
+      h-1/4
+      border-b-2
+      border-gray-300;
+}
+
+.navigation-link {
+  @apply text-gray-300 hover:text-white;
+}
+
+.navbar-links{
+  @apply flex w-[70%] justify-end items-center ;
+}
+
+.title-container{
+  @apply flex w-[30%]
+}
