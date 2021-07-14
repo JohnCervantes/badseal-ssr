@@ -18,7 +18,8 @@ export const ERROR_TOAST = {
 export const RESET_ICON = {
   resumeToggled: false,
   projectsToggled: false,
-  blogToggled: false
+  blogToggled: false,
+  homeToggled: false
 };
 
 export const cache = new InMemoryCache({

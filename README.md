@@ -1,4 +1,6 @@
-# what is this project about?
+# badseal-ssr
+
+## what is this project about?
 + This is a revamped version of my portfolio website. I'm replacing django with next.js stack.
 
 ## Technologies used: 
@@ -9,4 +11,4 @@
 + CI/CD - Vercel, GitHub Actions
 
 *Latest versions of these node packages are used in this project*
-# badseal-ssr
+
