@@ -1,5 +1,4 @@
 import React from "react";
-import seal from "../assets/seal3.png";
 import Image from "next/image";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { setState } from "../operations/mutation";
@@ -29,7 +28,7 @@ export default function Navigation() {
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="title-container">
-              <Image src={seal} height={20} width={50} />
+              <Image src="/seal3.png" height={20} width={50} />
               <NavigationLink type="" toggle="homeToggled">
                 <p>Badseal Studios</p>
               </NavigationLink>

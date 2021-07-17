@@ -39,3 +39,13 @@
 .navigation-icon {
   @apply invisible sm:visible;
 }
+
+.homepage-container {
+  @apply container flex sm:p-4 flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center;
+}
+
+.react-pdf__Page__annotations{
+  height:0 !important;
+}
+
+
