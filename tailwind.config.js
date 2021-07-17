@@ -1,5 +1,6 @@
 module.exports = {
   mode: "jit",
+  important: true,
   purge: [
     "./pages/*.{js,ts,jsx,tsx}",
     "./components/*.{js,ts,jsx,tsx}",
@@ -10,6 +11,10 @@ module.exports = {
     extend: {
       fontFamily: {
         elsie: ["Elsie Swash Caps", 'sans-serif'],
+      },
+      animation: {
+        bounce200: "bounce 1s infinite 200ms",
+        bounce400: "bounce 1s infinite 400ms",
       },
     },
   },

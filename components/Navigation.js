@@ -22,7 +22,7 @@ export default function Navigation() {
   } = useQuery(readState("icon"));
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
-  return (  
+  return (
     <>
       <nav className="navigation">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
@@ -48,15 +48,15 @@ export default function Navigation() {
             id="example-navbar-danger"
           >
             <div className="navbar-links">
-              <NavigationLink type="resume" toggle="resumeToggled">
-                Resume
-              </NavigationLink>
               <NavigationLink
                 // key={icon["projectsToggled"]}
                 type="projects"
                 toggle="projectsToggled"
               >
                 Projects
+              </NavigationLink>
+              <NavigationLink type="resume" toggle="resumeToggled">
+                Resume
               </NavigationLink>
               <NavigationLink
                 //key={icon["blogToggled"]}

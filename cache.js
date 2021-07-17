@@ -38,5 +38,6 @@ export const cache = new InMemoryCache({
 
 export const state = makeVar({
   icon: RESET_ICON,
-  activeComponent: ""
+  activeComponent: "",
+  showSpinner: false,
 });

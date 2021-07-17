@@ -17,28 +17,9 @@ function HomePage() {
           is blah blahMy name is blah blahMy name is is blah blahMy name is blah
           is blah blahMy name is blah blahMy name is is blah blahMy name is blah
           is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-
-
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
           is blah blahMy name is blah blahMy name is is blah blahMy name is blah
           is blah blahMy name is blah blahMy name is is blah blahMy name is blah
           blahMy name is is blah blahMy name is blah blahMy name is is blah
-          blahMy name is blah blahMy name is is blah blahMy name is blah blahMy
-          name is is blah blahMy name is blah blahMy name is is blah blahMy name
-          is blah blahMy name is is blah blahMy name is blah blahMy name is is
-          blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          blahMy name isis blah blahMy name is blah blahMy name isis blah blahMy
-          name is blah blahMy name isis blah blahMy name is blah blahMy name
-          isis blah blahMy name is blah blahMy name isis blah blahMy name is
-          blah blahMy name is
         </p>
       </div>
     </div>

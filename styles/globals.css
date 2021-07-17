@@ -40,12 +40,43 @@
   @apply invisible sm:visible;
 }
 
-.homepage-container {
-  @apply container flex sm:p-4 flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center;
+.homepage-container,
+.projects-container,
+.blog-container {
+  @apply flex sm:p-4 flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
 }
 
-.react-pdf__Page__annotations{
-  height:0 !important;
+.grid-layout {
+  @apply sm:grid sm:grid-cols-3 sm:gap-y-7;
 }
 
+.react-pdf__Page__annotations {
+  height: 0 !important;
+  width: 0 !important;
+}
 
+.react-pdf__Page__canvas {
+  margin: 0 auto;
+  width: 90% !important;
+  height: 100% !important;
+}
+
+.project-card  {
+  @apply overflow-hidden container mx-auto flex w-[350px] h-[200px] border-2 my-3 shadow-lg rounded-lg transition
+  duration-100 ease-out
+ hover:scale-105 cursor-pointer;
+}
+
+.post-card {
+  @apply container overflow-hidden mx-auto flex flex-col w-[90%] h-auto border-2 my-6 sm:my-0 sm:mb-3 shadow-lg transition
+  duration-100 ease-out
+ hover:scale-105 cursor-pointer;
+}
+
+.post-container {
+  @apply w-full;
+}
+
+.featured-container {
+  @apply w-[50%] h-[300px] border-2;
+}
