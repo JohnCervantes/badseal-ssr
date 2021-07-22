@@ -10,12 +10,15 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        elsie: ["Elsie Swash Caps", 'sans-serif'],
+        elsie: ["Elsie Swash Caps", "sans-serif"],
       },
       animation: {
         bounce200: "bounce 1s infinite 200ms",
         bounce400: "bounce 1s infinite 400ms",
       },
+      backgroundImage: (theme) => ({
+        "nav-wave": "url('/wave.svg')",
+      }),
     },
   },
   variants: {

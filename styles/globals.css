@@ -9,27 +9,28 @@
 }
 
 .navigation {
-  @apply bg-black
+  @apply bg-[#A2D9FF]
     w-full
     font-elsie
-    justify-center
-    sm:justify-start
     text-2xl
     flex
-    align-baseline
-    text-gray-300
-      p-5
-      h-1/4
-      border-b-2
-      border-gray-300;
+    items-start
+    text-gray-500
+      h-[75px]
+      absolute
+      z-50
+      p-3 
+      sm:p-8
+      justify-center
+      align-baseline;
 }
 
 .navigation-link {
-  @apply text-gray-300 hover:text-white;
+  @apply hover:text-black;
 }
 
 .navbar-links {
-  @apply flex w-full flex-col md:flex-row md:justify-end md:items-center;
+  @apply flex w-full h-auto flex-col md:flex-row md:justify-end;
 }
 
 .title-container {
@@ -43,7 +44,7 @@
 .homepage-container,
 .projects-container,
 .blog-container {
-  @apply flex sm:p-4 flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
+  @apply flex pt-56 sm:pt-48 pb-32 mx-auto overflow-hidden flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
 }
 
 .grid-layout {
@@ -61,7 +62,7 @@
   height: 100% !important;
 }
 
-.project-card  {
+.project-card {
   @apply overflow-hidden container mx-auto flex w-[350px] h-[200px] border-2 my-3 shadow-lg rounded-lg transition
   duration-100 ease-out
  hover:scale-105 cursor-pointer;
@@ -79,4 +80,8 @@
 
 .featured-container {
   @apply w-[50%] h-[300px] border-2;
+}
+
+.footer {
+  @apply font-elsie text-gray-300 flex flex-col items-center content-center align-middle bg-gradient-to-t from-gray-400 via-gray-700 to-blue-700 h-[150px] justify-center;
 }

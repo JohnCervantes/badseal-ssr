@@ -1,26 +1,43 @@
 import Image from "next/image";
+import { useQuery } from "@apollo/client";
+import { readState } from "../operations/query";
 
 function HomePage() {
+  const {
+    data: {
+      readState: { navbarOpen },
+    },
+  } = useQuery(readState("navbarOpen"));
+
   return (
-    <div className="homepage-container">
-      <div className="container">
-        <Image src="/stock.jpg" height={50} width={75} layout="responsive"></Image>
-      </div>
-      <div className="container p-5 h-3/6 sm:w-4/5 m-3 sm:bg-indigo-900 text-white text-center">
-        <p className="text-green-100 text-5xl mb-5">
-          Welcome and thank you for visiting my website!
-        </p>
-        <p className="text-3xl mb-3">About me</p>
-        <p>
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          is blah blahMy name is blah blahMy name is is blah blahMy name is blah
-          blahMy name is is blah blahMy name is blah blahMy name is is blah
-        </p>
+    <div>
+      <div className="homepage-container flex-col items-center justify-center pb-16">
+        <div>
+          <p className="text-green-100 text-4xl font-semibold mb-5 text-center">
+            Welcome and thank you for visiting my website!
+          </p>
+          <div className="relative mx-auto container w-full h-[300px] sm:w-[300px] sm:h-[450px]">
+            <Image src="/stock.jpg" layout="fill"></Image>
+          </div>
+        </div>
+        <div className="container mx-auto w-full bg-white p-16 h-3/6 m-3 text-black text-center">
+          <div className="grid grid-cols-1 divide-y divide-blue-300 width-10 text-3xl mb-7">
+            <div className="mb-2 font-semibold">About me</div>
+            <div/>
+          </div>
+
+          <p>
+            is blah blahMy name is blah blahMy name is is blah blahMy name is
+            blah is blah blahMy name is blah blahMy name is is blah blahMy name
+            is blah is blah blahMy name is blah blahMy name is is blah blahMy
+            name is blah is blah blahMy name is blah blahMy name is is blah
+            blahMy name is blah is blah blahMy name is blah blahMy name is is
+            blah blahMy name is blah is blah blahMy name is blah blahMy name is
+            is blah blahMy name is blah is blah blahMy name is blah blahMy name
+            is is blah blahMy name is blah blahMy name is is blah blahMy name is
+            blah blahMy name is is blah
+          </p>
+        </div>
       </div>
     </div>
   );

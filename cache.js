@@ -40,4 +40,6 @@ export const state = makeVar({
   icon: RESET_ICON,
   activeComponent: "",
   showSpinner: false,
+  showToast: RESET_TOAST,
+  navbarOpen: false
 });

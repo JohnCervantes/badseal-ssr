@@ -22,7 +22,7 @@ export default function resume() {
   }, []);
 
   return (
-    <div className="overflow-hidden py-3 flex min-h-screen bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center justify-center content-center">
+    <div className="overflow-hidden pt-56 sm:pt-48 py-3 flex min-h-screen bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center justify-center content-center">
       <PDFViewer />;
     </div>
   );

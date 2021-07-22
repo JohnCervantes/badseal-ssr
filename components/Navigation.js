@@ -17,35 +17,33 @@ export default function Navigation() {
   const router = useRouter();
   const {
     data: {
-      readState: { icon },
+      readState: { icon, navbarOpen },
     },
-  } = useQuery(readState("icon"));
+  } = useQuery(readState("icon, navbarOpen"));
 
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="navigation">
-        <div className="container mx-auto flex flex-wrap items-center justify-between">
+      <nav className={"navigation " + (navbarOpen ? "h-[155px]" : null)}>
+        <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="title-container">
-              <Image src="/seal3.png" height={20} width={50} />
+              <Image src="/seal.png" height={20} width={50} />
               <NavigationLink type="" toggle="homeToggled">
                 <p>Badseal Studios</p>
               </NavigationLink>
             </div>
             <button
               className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-              onClick={() => setNavbarOpen(!navbarOpen)}
+              onClick={() => setState({ navbarOpen: !navbarOpen })}
             >
               <FontAwesomeIcon icon={faBars} size="sm" />
             </button>
           </div>
           <div
             className={
-              "lg:flex flex-grow items-center" +
+              "lg:flex flex-grow items-center  bg-[#A2D9FF]" +
               (navbarOpen ? "flex" : " hidden")
             }
-            id="example-navbar-danger"
           >
             <div className="navbar-links">
               <NavigationLink
@@ -69,6 +67,12 @@ export default function Navigation() {
           </div>
         </div>
       </nav>
+      <div
+        className={
+          "absolute z-50 w-full h-[75px] bg-nav-wave " +
+          (navbarOpen ? "top-36" : "top-16")
+        }
+      />
     </>
   );
 
@@ -79,7 +83,7 @@ export default function Navigation() {
         <a
           className={`mr-3 ${
             router.pathname === `/${props.type}`
-              ? "text-blue-300"
+              ? "text-black"
               : "navigation-link"
           }`}
           onClick={() => {
