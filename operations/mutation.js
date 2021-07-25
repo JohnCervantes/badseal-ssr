@@ -67,7 +67,6 @@ export async function addProject(
         git,
       },
     });
-    console.log(addProject)
     setState({
       projects: state().projects.concat(addProject),
       showModal: { show: false, type: "" },
@@ -78,7 +77,6 @@ export async function addProject(
         message: "New project has been successfully added!",
       },
     });
-    console.log(state().projects)
   } catch (e) {
     setState({
       showToast: {

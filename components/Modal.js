@@ -107,7 +107,6 @@ function Modal() {
         await uploadPhoto(pic);
         thumbnail = getSignedUrl(pic.target.files[0].name);
       }
-      console.log(thumbnail);
       await addProject(
         thumbnail,
         image,

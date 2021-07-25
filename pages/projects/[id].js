@@ -16,16 +16,10 @@ export default function Project() {
     },
   } = useQuery(readState("projects"));
 
-  console.log(projects);
-
   useEffect(() => {
-    console.log(projects);
     const proj = projects.find((p) => p._id === id);
-    console.log(proj);
     setProject(proj);
   }, [id]);
-
-  console.log(project);
 
   if (!project) {
     return <p>loading...</p>;

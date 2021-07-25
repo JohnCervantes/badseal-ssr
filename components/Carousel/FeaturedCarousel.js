@@ -8,7 +8,6 @@ const AUTOPLAY_INTERVAL = 10000;
 const PARALLAX_FACTOR = 0.8;
 
 function FeaturedEmblaCarousel({projectImages}) {
-  console.log(projectImages)
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     dragFree: true,

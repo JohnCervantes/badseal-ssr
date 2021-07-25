@@ -6,6 +6,7 @@ const resolvers = {
     projects: async (parent, args, context) => {
       try {
         const result = await project.find({});
+        console.log(result)
         return result;
       } catch (error) {
         throw new ApolloError(error);
