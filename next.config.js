@@ -5,12 +5,12 @@ module.exports = {
   env: {
     REACT_APP_ACCESS_ID: process.env.REACT_APP_ACCESS_ID,
     REACT_APP_ACCESS_KEY: process.env.REACT_APP_ACCESS_KEY,
-    REACT_APP_REGION : process.env.REACT_APP_REGION,
+    REACT_APP_REGION: process.env.REACT_APP_REGION,
     SECRET: process.env.SECRET,
     URI: process.env.URI,
     DB_URI: process.env.DB_URI,
   },
   images: {
-    domains: ["cervantes-family.s3.us-west-2.amazonaws.com"],
-  }
+    domains: ["badseal.s3.us-west-2.amazonaws.com"],
+  },
 };

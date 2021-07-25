@@ -41,5 +41,7 @@ export const state = makeVar({
   activeComponent: "",
   showSpinner: false,
   showToast: RESET_TOAST,
-  navbarOpen: false
+  navbarOpen: false,
+  showModal: RESET_MODAL,
+  projects: []
 });

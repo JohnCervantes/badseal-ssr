@@ -1,8 +1,5 @@
 import { ApolloError } from "apollo-server-errors";
 import project from "../models/project.js";
-// import user from "../models/post.js";
-// import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken";
 
 const resolvers = {
   Query: {
@@ -22,10 +19,12 @@ const resolvers = {
         thumbnail,
         image,
         projectName,
-        description,
+        shortDescription,
         technology,
         status,
         feature,
+        longDescription,
+        git,
       },
       context
     ) => {
@@ -34,16 +33,18 @@ const resolvers = {
           thumbnail,
           image,
           projectName,
-          description,
+          shortDescription,
+          longDescription,
           technology,
           status,
           feature,
+          git,
         });
         return result;
       } catch (error) {
         throw new ApolloError(error);
       }
-    },
+    }
   },
 
   //   addUser: async (
@@ -84,5 +85,31 @@ const resolvers = {
   //   },
   //},
 };
+
+// export const handleFileUpload = async (file) => {
+//   console.log(file);
+//   const { createReadStream, filename } = await file;
+
+//   const key = uuid();
+
+//   return new Promise((resolve, reject) => {
+//     s3.upload(
+//       {
+//         ...s3DefaultParams,
+//         Body: createReadStream(),
+//         Key: `${key}/${filename}`,
+//       },
+//       (err, data) => {
+//         if (err) {
+//           console.log("error uploading...", err);
+//           reject(err);
+//         } else {
+//           console.log("successfully uploaded file...", data);
+//           resolve(data);
+//         }
+//       }
+//     );
+//   });
+// };
 
 export default resolvers;

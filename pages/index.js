@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import { readState } from "../operations/query";
 
+
 function HomePage() {
   const {
     data: {
@@ -13,7 +14,7 @@ function HomePage() {
     <div>
       <div className="homepage-container flex-col items-center justify-center pb-16">
         <div>
-          <p className="text-green-100 text-4xl font-semibold mb-5 text-center">
+          <p className="homepage-title">
             Welcome and thank you for visiting my website!
           </p>
           <div className="relative mx-auto container w-full h-[300px] sm:w-[300px] sm:h-[450px]">
@@ -21,7 +22,7 @@ function HomePage() {
           </div>
         </div>
         <div className="container mx-auto w-full bg-white p-16 h-3/6 m-3 text-black text-center">
-          <div className="grid grid-cols-1 divide-y divide-blue-300 width-10 text-3xl mb-7">
+          <div className="divider">
             <div className="mb-2 font-semibold">About me</div>
             <div/>
           </div>

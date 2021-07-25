@@ -1,14 +1,17 @@
 import { gql } from "apollo-server-micro";
 const typeDefs = gql`
+
   type project {
     _id: ID
     thumbnail: String!
     image: String!
     projectName: String!
-    description: String!
+    shortDescription: String
+    longDescription: String
     technology: String!
     status: String!
     feature: String!
+    git: String!
   }
 
   type user {
@@ -40,10 +43,12 @@ const typeDefs = gql`
       thumbnail: String!
       image: String!
       projectName: String!
-      description: String!
+      shortDescription: String
+      longDescription: String
       technology: String!
       status: String!
       feature: String!
+      git: String!
     ): project
   }
 `;

@@ -18,7 +18,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "apollo-server-micro": "^2.25.2",
+    "apollo-upload-client": "^16.0.0",
+    "aws-sdk": "^2.953.0",
     "dotenv": "^10.0.0",
+    "embla-carousel": "^4.5.3",
     "formik": "^2.2.9",
     "graphql": "^15.5.1",
     "mongoose": "^5.13.3",
@@ -26,11 +29,15 @@
     "next": "^11.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-pdf": "^5.3.2"
+    "react-pdf": "^5.3.2",
+    "uuidv4": "^6.2.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
+  },
+  "resolutions": {
+    "graphql-upload": "^11.0.0"
   }
 }

@@ -7,10 +7,12 @@ export const ALL_PROJECTS = gql`
       thumbnail
       image
       projectName
-      description
+      shortDescription
+      longDescription
       technology
       status
       feature
+      git
     }
   }
 `;
