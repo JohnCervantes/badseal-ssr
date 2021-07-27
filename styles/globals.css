@@ -83,7 +83,7 @@
 }
 
 .footer {
-  @apply font-elsie text-gray-300 flex flex-col items-center content-center align-middle bg-gradient-to-t from-gray-400 via-gray-700 to-blue-700 h-[150px] justify-center;
+  @apply font-elsie text-gray-300 flex flex-col items-center content-center align-middle bg-gradient-to-t from-gray-900 via-gray-500 to-blue-700 h-[150px] justify-center;
 }
 
 /* Modal CSS */

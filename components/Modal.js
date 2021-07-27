@@ -59,7 +59,7 @@ function Modal() {
 
   const projectForm = useFormik({
     initialValues: {
-      image: "/stock1.jpg, /stock2.jpg, /stock3.jpg",
+      image: "[{\"seal1\":\"/stock1.jpg\"},{\"seal2\":\"/stock2.jpg\"},{\"seal3\":\"/stock3.jpg\"}]",
       projectName: "",
       shortDescription: "Add some description about the project...",
       longDescription: "Add full description about the project...",

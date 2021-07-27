@@ -32,8 +32,38 @@ export async function uploadPhoto(e) {
   return;
 }
 
-export function getSignedUrl(objectName) {
-  var url = s3.getSignedUrl("getObject", {
+export async function uploadPhotos(images) {
+  let files = [];
+
+  for (let file of Array.from(images)) {
+    const filename = encodeURIComponent(file.name);
+    const res = await fetch(`/api/upload-url?file=${filename}`);
+    const { url, fields } = await res.json();
+    const formData = new FormData();
+
+    Object.entries({ ...fields, file }).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    const upload = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (upload.ok) {
+      console.log("Uploaded successfully!");
+      const url = await getSignedUrl(filename);
+      files.push({ [filename]: url });
+    } else {
+      console.error("Upload failed.");
+    }
+  };
+
+  return JSON.stringify(files);
+}
+
+export async function getSignedUrl(objectName) {
+  var url = await s3.getSignedUrl("getObject", {
     Bucket: "badseal",
     Key: objectName,
     Expires: 518400,

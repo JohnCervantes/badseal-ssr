@@ -1,6 +1,5 @@
 import { gql } from "apollo-server-micro";
 const typeDefs = gql`
-
   type project {
     _id: ID
     thumbnail: String!
@@ -14,17 +13,17 @@ const typeDefs = gql`
     git: String!
   }
 
-  type user {
-    _id: ID
-    password: String!
-    email: String!
-    firstName: String!
-    lastName: String!
-    phone: String
-    isAdmin: Boolean
-    registerDate: String!
-    token: String
-  }
+  # type user {
+  #   _id: ID
+  #   password: String!
+  #   email: String!
+  #   firstName: String!
+  #   lastName: String!
+  #   phone: String
+  #   isAdmin: Boolean
+  #   registerDate: String!
+  #   token: String
+  # }
 
   type Query {
     projects: [project]
@@ -49,6 +48,18 @@ const typeDefs = gql`
       status: String!
       feature: String!
       git: String!
+    ): project
+    updateProject(
+      _id: ID!
+      thumbnail: String
+      image: String
+      projectName: String
+      shortDescription: String
+      longDescription: String
+      technology: String
+      status: String
+      feature: String
+      git: String
     ): project
   }
 `;

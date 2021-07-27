@@ -6,19 +6,20 @@ import { setState } from "../operations/mutation";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 
-export default function projects({ data: { projects }, errors }) {
+export default function projects({ projects, errors }) {
   const {
     data: {
       readState: { projects: projectsVar },
     },
   } = useQuery(readState("projects"));
 
-  // useEffect(() => {
-  //   if (errors) return console.log(errors);
-  //   if (projects) {
-  //     setState({ projects });
-  //   }
-  // }, [projects]);
+  useEffect(() => {
+    if (errors) return console.log("Errors: " + errors);
+    // if (projectsVar.length === 0) setState({ showSpinner: true });
+    if (projects) {
+      setState({ projects });
+    }
+  }, [projects]);
 
   if (projectsVar.length > 0) {
     return (
@@ -60,35 +61,37 @@ export default function projects({ data: { projects }, errors }) {
         })}
       </div>
     );
-  } 
-  return <p>no projects</p>
+  } else {
+    return <p className="projects-container min-h-screen"></p>;
+  }
 }
 
-// export const getStaticProps = async () => {
-//   try {
-//     const { data, errors } = await client.query(
-//       { query: ALL_PROJECTS },
-//       {
-//         fetchPolicy: "no-cache",
-//       }
-//     );
-//     // const newData = [];
-//     // await Promise.all(
-//     //   data.animals.map(async (animal) => {
-//     //     const { base64 } = await getPlaiceholder(animal.pic);
-//     //     newData.push({ ...animal, blurDataURL: base64 });
-//     //   })
-//     // );
+export const getServerSideProps = async () => {
+  try {
+    const { data, errors } = await client.query(
+      { query: ALL_PROJECTS },
+      {
+        fetchPolicy: "no-cache",
+      }
+    );
+    // const newData = [];
+    // await Promise.all(
+    //   data.animals.map(async (animal) => {
+    //     const { base64 } = await getPlaiceholder(animal.pic);
+    //     newData.push({ ...animal, blurDataURL: base64 });
+    //   })
+    // );
 
-//     if (!data) {
-//       return { props: { data: { projects: [] } }, errors };
-//     }
-//     return {
-//       props: {
-//         data,
-//       },
-//     };
-//   } catch (error) {
-//     return { props: { errors: error.message } };
-//   }
-// };
+    if (!data) {
+      return { props: { projects: [], errors } };
+    }
+    const projects = data.projects;
+    return {
+      props: {
+        projects,
+      },
+    };
+  } catch (error) {
+    return { props: { errors: error.message } };
+  }
+};

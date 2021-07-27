@@ -32,26 +32,26 @@ export default function Toast() {
   }
   return (
     <div
-      className={`animate-fade-in-up hover:scale-105 min-w-1/4 transition-all bg-gray-50 border-l-4 ${toast.borderColor} p-4 py-4 shadow-lg flex items-center justify-between mb-6 bottom-3 left-1/2 -translate-x-1/2 fixed transform z-50`}
+      className={`animate-fade-in-up min-w-[300px] sm:min-w-[400px] mx-auto hover:scale-105 min-w-1/4 transition-all bg-gray-50 border-l-4 ${toast.borderColor} p-4 py-4 shadow-lg flex items-center justify-between mb-6 bottom-3 left-1/2 -translate-x-1/2 fixed transform z-50`}
       role="alert"
     >
       <span className="mx-auto mr-5 ml-0">
         <FontAwesomeIcon
           className={toast.imgColor}
-          size='2x'
+          size="2x"
           icon={toast.img}
         />
       </span>
-      <div className="sm:text-left w-full sm:mb-0 mb-3 mr-10 text-left">
+      <div className="sm:text-left sm:mb-0 mb-3 mr-10 text-left">
         <p className="font-bold mb-1 text-lg">{toast.header}</p>
-      <p className="text-grey-dark inline-block">{toast.message}</p>
+        <p className="text-grey-dark ">{toast.message}</p>
       </div>
       <FontAwesomeIcon
         onClick={() => {
           clearTimeout(id);
           setState({ showToast: RESET_TOAST });
         }}
-        className="flex-no-shrink fill-current text-center text-gray-600 cursor-pointer mb-8" 
+        className="flex-no-shrink fill-current text-center text-gray-600 cursor-pointer mb-8"
         size="lg"
         icon={faTimes} //setStatusImage(showToast.status)
       />

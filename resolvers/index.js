@@ -6,7 +6,6 @@ const resolvers = {
     projects: async (parent, args, context) => {
       try {
         const result = await project.find({});
-        console.log(result)
         return result;
       } catch (error) {
         throw new ApolloError(error);
@@ -45,7 +44,45 @@ const resolvers = {
       } catch (error) {
         throw new ApolloError(error);
       }
-    }
+    },
+    updateProject: async (
+      parent,
+      {
+        _id,
+        thumbnail,
+        image,
+        projectName,
+        shortDescription,
+        longDescription,
+        technology,
+        status,
+        feature,
+        git,
+      },
+      context
+    ) => {
+      try {
+        const result = await project.findOneAndUpdate(
+          { _id },
+          {
+            thumbnail,
+            image,
+            projectName,
+            shortDescription,
+            longDescription,
+            technology,
+            status,
+            feature,
+          },
+          {
+            new: true,
+          }
+        );
+        return result;
+      } catch (error) {
+        throw new ApolloError(error);
+      }
+    },
   },
 
   //   addUser: async (
@@ -86,31 +123,5 @@ const resolvers = {
   //   },
   //},
 };
-
-// export const handleFileUpload = async (file) => {
-//   console.log(file);
-//   const { createReadStream, filename } = await file;
-
-//   const key = uuid();
-
-//   return new Promise((resolve, reject) => {
-//     s3.upload(
-//       {
-//         ...s3DefaultParams,
-//         Body: createReadStream(),
-//         Key: `${key}/${filename}`,
-//       },
-//       (err, data) => {
-//         if (err) {
-//           console.log("error uploading...", err);
-//           reject(err);
-//         } else {
-//           console.log("successfully uploaded file...", data);
-//           resolve(data);
-//         }
-//       }
-//     );
-//   });
-// };
 
 export default resolvers;

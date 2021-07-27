@@ -76,7 +76,7 @@ function FeaturedEmblaCarousel({projectImages}) {
     <div className="embla">
       <div className="embla__viewport" ref={viewportRef}>
         <div className="embla__container">
-          {projectImages.split(",").map((image, index) => (
+          {JSON.parse(projectImages).map((image, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__slide__inner">
                 <div
@@ -88,8 +88,9 @@ function FeaturedEmblaCarousel({projectImages}) {
                     layout="fill"
                     // width="350px"
                     // height="200px"
-                    src={image.trim()}
+                    src={image[Object.keys(image)[0]]}
                     quality="100"
+                    unoptimized={true}  
                     //lurDataURL={image.blurDataURL}
                     //alt="Picture of the missing pet"
                     //placeholder="blur"

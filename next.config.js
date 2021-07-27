@@ -11,6 +11,6 @@ module.exports = {
     DB_URI: process.env.DB_URI,
   },
   images: {
-    domains: ["badseal.s3.us-west-2.amazonaws.com"],
+    domains: ["","badseal.s3.us-west-2.amazonaws.com"],
   },
 };
