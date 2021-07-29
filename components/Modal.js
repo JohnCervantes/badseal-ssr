@@ -148,8 +148,6 @@ function Modal() {
             height="300px"
             width="300px"
             alt="Thumbnail of the project"
-            // temporary fix for the aws image bug. remove this when vercel 11.03 is available
-            unoptimized={true}
           />
           <label>Project&apos;s thumbnail:</label>
           <input

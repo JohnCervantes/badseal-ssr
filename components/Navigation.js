@@ -23,7 +23,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={"navigation " + (navbarOpen ? "h-[155px]" : null)}>
+      <nav className={"navigation " + (navbarOpen ? "h-[170px]" : "")}>
         <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <div className="title-container">
@@ -69,8 +69,8 @@ export default function Navigation() {
       </nav>
       <div
         className={
-          "absolute z-50 w-full h-[75px] bg-nav-wave " +
-          (navbarOpen ? "top-36" : "top-16")
+          "absolute z-30 w-full h-[75px] bg-nav-wave " +
+          (navbarOpen ? "top-36" : "top-12")
         }
       />
     </>

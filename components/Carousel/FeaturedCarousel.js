@@ -89,8 +89,7 @@ function FeaturedEmblaCarousel({projectImages}) {
                     // width="350px"
                     // height="200px"
                     src={image[Object.keys(image)[0]]}
-                    quality="100"
-                    unoptimized={true}  
+                    quality="100" 
                     //lurDataURL={image.blurDataURL}
                     //alt="Picture of the missing pet"
                     //placeholder="blur"

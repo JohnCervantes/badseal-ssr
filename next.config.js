@@ -9,6 +9,7 @@ module.exports = {
     SECRET: process.env.SECRET,
     URI: process.env.URI,
     DB_URI: process.env.DB_URI,
+    REACT_APP_GRAPHQL_URL: process.env.REACT_APP_GRAPHQL_URL
   },
   images: {
     domains: ["","badseal.s3.us-west-2.amazonaws.com"],

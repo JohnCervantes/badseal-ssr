@@ -10,11 +10,11 @@
     font-elsie
     text-2xl
     flex
-    items-start
+    items-center
     text-gray-500
       h-[75px]
       absolute
-      z-30
+      z-40
       p-3 
       sm:p-8
       justify-center
@@ -44,7 +44,7 @@
 .homepage-container,
 .projects-container,
 .blog-container {
-  @apply flex pt-56 sm:pt-48 pb-32 mx-auto overflow-hidden flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
+  @apply flex pt-52 sm:pt-44 pb-1 sm:pb-32 mx-auto overflow-hidden flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
 }
 
 .grid-layout {

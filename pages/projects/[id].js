@@ -30,7 +30,6 @@ export default function Project() {
     setProject(proj);
   }, [id, projects]);
 
-
   if (!project) {
     return <p>loading...</p>;
   }
@@ -94,7 +93,6 @@ export default function Project() {
                     src={URL.createObjectURL(image)}
                     width="400px"
                     height="200px"
-                    unoptimized={true}
                     className="m-3 block"
                   />
                 );
@@ -137,17 +135,20 @@ export default function Project() {
 
           <button
             onClick={async () => {
-              setState({showSpinner: true})
-              const imagesFileNames = await uploadPhotos(images);
+              let imagesFileNames;
+              setState({ showSpinner: true });
+              if (images.length > 0) {
+                imagesFileNames = await uploadPhotos(images);
+              }
               updateProject({
                 ...project,
                 feature,
                 longDescription,
                 projectName,
-                image: imagesFileNames,
+                image: imagesFileNames ? imagesFileNames : project.image,
               });
               setEditMode(false);
-              setState({showSpinner: false})
+              setState({ showSpinner: false });
             }}
           >
             save

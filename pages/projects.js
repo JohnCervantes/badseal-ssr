@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { ALL_PROJECTS, readState } from "../operations/query";
-import { client } from "./_app";
+import { client, getStandAloneApolloClient } from "./_app";
 import { setState } from "../operations/mutation";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
 
-export default function projects({ projects, errors }) {
+export default function projects({ projects, error }) {
   const {
     data: {
       readState: { projects: projectsVar },
@@ -14,8 +14,8 @@ export default function projects({ projects, errors }) {
   } = useQuery(readState("projects"));
 
   useEffect(() => {
-    if (errors) return console.log("Errors: " + errors);
-    // if (projectsVar.length === 0) setState({ showSpinner: true });
+    if (error) return console.log("Errors: " + error);
+    //if (loading) setState({ showSpinner: true });
     if (projects) {
       setState({ projects });
     }
@@ -42,7 +42,6 @@ export default function projects({ projects, errors }) {
                     className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
                     layout="fill"
                     src={project.thumbnail}
-                    unoptimized={true}
                   ></Image>
                 </div>
                 <div className="break-words w-[70%] ml-1 bg-white p-5">
@@ -66,24 +65,18 @@ export default function projects({ projects, errors }) {
   }
 }
 
-export const getServerSideProps = async () => {
+export async function getServerSideProps(context) {
   try {
-    const { data, errors } = await client.query(
+    const client = getStandAloneApolloClient();
+    const { data, error } = await client.query(
       { query: ALL_PROJECTS },
       {
         fetchPolicy: "no-cache",
       }
     );
-    // const newData = [];
-    // await Promise.all(
-    //   data.animals.map(async (animal) => {
-    //     const { base64 } = await getPlaiceholder(animal.pic);
-    //     newData.push({ ...animal, blurDataURL: base64 });
-    //   })
-    // );
 
     if (!data) {
-      return { props: { projects: [], errors } };
+      return { props: { projects: [], error } };
     }
     const projects = data.projects;
     return {
@@ -92,6 +85,6 @@ export const getServerSideProps = async () => {
       },
     };
   } catch (error) {
-    return { props: { errors: error.message } };
+    return { props: { error: error.message } };
   }
-};
+}
