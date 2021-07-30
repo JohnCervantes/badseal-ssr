@@ -13,7 +13,7 @@ import {
 export default function Footer() {
   return (
     <div className="footer">
-      <button
+      <div
         className="border-2 group p-2 hover:border-white mb-3"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
@@ -21,7 +21,7 @@ export default function Footer() {
           <FontAwesomeIcon icon={faArrowUp} /> {"  "}
           To the top
         </span>
-      </button>
+      </div>
       <div>
         <FontAwesomeIcon
           icon={faEnvelope}

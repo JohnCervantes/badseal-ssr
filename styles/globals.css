@@ -34,7 +34,7 @@
 }
 
 .divider {
-  @apply grid mx-auto grid-cols-1 divide-y-2 divide-blue-300 w-[300px] text-3xl mb-7;
+  @apply  mx-auto border-blue-300 w-[150px] border-b-2 mb-5 mt-1 ;
 }
 
 .navigation-icon {
@@ -44,7 +44,19 @@
 .homepage-container,
 .projects-container,
 .blog-container {
-  @apply flex pt-52 sm:pt-44 pb-1 sm:pb-32 mx-auto overflow-hidden flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
+  @apply flex sm:pt-44 pb-1 sm:pb-32 mx-auto overflow-hidden flex-col sm:flex-row bg-gradient-to-br from-green-300 via-blue-500 to-purple-600;
+}
+
+button {
+  @apply
+  bg-green-200
+  shadow-sm
+  border-gray-200
+  border-2
+  text-black
+  rounded-lg py-2 px-4
+  hover:border-gray-400
+  mx-auto
 }
 
 .grid-layout {
@@ -144,14 +156,14 @@ label {
   mr-3;
 }
 
-.form-submit {
+/* .form-submit {
   @apply bg-green-500
   p-2
   rounded-lg
   inset-x-0
   mx-auto
   mt-5;
-}
+} */
 
 .form-header,
 .homepage-title {
@@ -312,5 +324,15 @@ label {
 
 .embla__slide--thumb.is-selected .embla__slide__thumbnail {
   opacity: 1;
+}
+
+
+
+.hover-trigger .hover-target {
+  display: none;
+}
+
+.hover-trigger:hover .hover-target {
+  display: block;
 }
 

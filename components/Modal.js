@@ -212,7 +212,7 @@ function Modal() {
           )}
         </div>
         <button
-          className="form-submit"
+          className="w-[100px]"
           type="submit"
           onClick={(e) => projectForm.handleSubmit(e)}
         >
@@ -302,8 +302,7 @@ function Modal() {
           )}
         </div>
         <button
-          className="form-submit"
-          type="submit"
+          className="w-[100px]"
           onClick={(e) => registerForm.handleSubmit(e)}
         >
           Submit

@@ -18,9 +18,9 @@ export default function Project() {
   const [feature, setFeature] = useState("");
   const {
     data: {
-      readState: { projects },
+      readState: { projects, navbarOpen },
     },
-  } = useQuery(readState("projects"));
+  } = useQuery(readState("projects, navbarOpen"));
 
   useEffect(() => {
     const proj = projects.find((p) => p._id === id);
@@ -39,24 +39,32 @@ export default function Project() {
   }
 
   return (
-    <div className="homepage-container">
+    <div className={`projects-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
       <div className="relative bg-white w-10/12 mx-auto text-center p-5">
         <button
-          className="absolute top-3 right-5 border-2 bg-green rounded"
+          className="absolute top-3 right-5"
           onClick={() => setEditMode(true)}
         >
           Edit
         </button>
-        <div className="grid mx-auto grid-cols-1 divide-y-2 divide-blue-300 w-[200px] text-3xl mb-7">
-          <div className={"mb-2 font-semibold"}>{projectName}</div>
-          <span></span>
+        <div className={"mb-2 font-semibold text-3xl text-center"}>
+          {projectName}
         </div>
+        <div className="divider" />
+
         <FeaturedEmblaCarousel projectImages={project.image} />
 
         <div className="text-left p-5">
-          <p>What is this project about?</p>
+          <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+            What is this project about?
+          </p>
+          <div className="divider" />
           <p className="whitespace-pre-wrap">{project.longDescription}</p>
-          <p>What are the features of this project?</p>
+
+          <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+            What are the features of this project?
+          </p>
+          <div className="divider" />
           <p className="whitespace-pre-wrap">{project.feature}</p>
         </div>
       </div>
@@ -64,10 +72,10 @@ export default function Project() {
   );
   function editForm() {
     return (
-      <div className="homepage-container">
+      <div className={`homepage-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
         <div className="relative bg-white w-10/12 mx-auto text-center p-5">
           <button
-            className=" absolute top-3 right-5 border-2 bg-green rounded"
+            className=" absolute top-3 right-5 text-red-900"
             onClick={() => {
               setEditMode(false);
               setImages({});
@@ -75,17 +83,16 @@ export default function Project() {
           >
             Cancel
           </button>
-          <div className="grid mx-auto grid-cols-1 divide-y-2 divide-blue-300 w-[200px] text-3xl mb-7">
-            <textarea
-              className="overflow-hidden text-center mb-2 resize-none"
-              placeholder="Edit title..."
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-              rows="1"
-            ></textarea>
-            <span></span>
-          </div>
-          <div className="w-[80%] bg-gray-300 mx-auto h-[250px] text-center whitespace-nowrap overflow-x-auto">
+          <textarea
+            className="overflow-hidden text-center w-[250px] resize-none text-3xl"
+            placeholder="Edit title..."
+            value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
+            rows="1"
+          ></textarea>
+          <div className="divider" />
+
+          <div className="w-[80%] leading-10 font-extralight text-xl bg-gray-300 mx-auto h-[250px] text-center whitespace-nowrap overflow-x-auto">
             {images.length > 0 ? (
               Array.from(images).map((image) => {
                 return (
@@ -94,14 +101,16 @@ export default function Project() {
                     width="400px"
                     height="200px"
                     className="m-3 block"
+                    unoptimized={true}
                   />
                 );
               })
             ) : (
-              <p>no images selected</p>
+              <p>No images selected...</p>
             )}
           </div>
           <input
+            className="w-[30%] mt-3"
             onClick={(e) => {
               e.target.value = null;
               setImages({});
@@ -113,7 +122,11 @@ export default function Project() {
             }}
           />
           <div className="text-left p-5">
-            <p>What is this project about?</p>
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+              {" "}
+              What is this project about?
+            </p>
+            <div className="divider" />
             <textarea
               rows="10"
               onChange={(e) => {
@@ -122,7 +135,10 @@ export default function Project() {
               value={longDescription}
               placeholder="Edit full description..."
             />
-            <p>What are the features of this project?</p>
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+              What are the features of this project?
+            </p>
+            <div className="divider" />
             <textarea
               rows="10"
               onChange={(e) => {
@@ -151,7 +167,7 @@ export default function Project() {
               setState({ showSpinner: false });
             }}
           >
-            save
+            Save
           </button>
         </div>
       </div>

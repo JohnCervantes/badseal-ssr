@@ -1,37 +1,51 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { ALL_PROJECTS, readState } from "../operations/query";
-import { client, getStandAloneApolloClient } from "./_app";
+import { getStandAloneApolloClient } from "./_app";
 import { setState } from "../operations/mutation";
 import Link from "next/link";
 import { useQuery } from "@apollo/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function projects({ projects, error }) {
   const {
     data: {
-      readState: { projects: projectsVar },
+      readState: { projects: projectsVar, navbarOpen },
     },
-  } = useQuery(readState("projects"));
+  } = useQuery(readState("projects, navbarOpen"));
 
   useEffect(() => {
     if (error) return console.log("Errors: " + error);
-    //if (loading) setState({ showSpinner: true });
     if (projects) {
-      setState({ projects });
+      setState({ projects, showSpinner: false });
     }
   }, [projects]);
 
   if (projectsVar.length > 0) {
     return (
-      <div className="relative projects-container grid-layout">
-        <button
-          className="absolute top-36 right-5 border-2 bg-green rounded"
-          onClick={() =>
-            setState({ showModal: { show: true, type: "addProject" } })
-          }
+      <div
+        className={`relative projects-container grid-layout ${
+          navbarOpen ? "pt-64" : "pt-40"
+        }`}
+      >
+        <div
+          className={`flex justify-center items-center  absolute ${
+            navbarOpen ? "top-52" : "top-28"
+          } right-5 sm:top-28`}
         >
-          Add Project
-        </button>
+          <div className="text-blue-300 hover-trigger">
+            <FontAwesomeIcon icon={faInfoCircle} size={"2x"} className="mr-1" />
+            <div className="absolute right-20 rounded bg-black w-[200px] hover-target p-3 z-50">For demo purposes, I made crud operations available in public. Please edit responsibly :)</div>
+          </div>
+          <button
+            onClick={() =>
+              setState({ showModal: { show: true, type: "addProject" } })
+            }
+          >
+            Add+
+          </button>
+        </div>
 
         {projectsVar.map((project) => {
           return (

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useQuery } from "@apollo/client";
 import { readState } from "../operations/query";
+import { useEffect } from "react";
+import { setState } from "../operations/mutation";
 
 function HomePage() {
   const {
@@ -9,9 +11,17 @@ function HomePage() {
     },
   } = useQuery(readState("navbarOpen"));
 
+  useEffect(() => {
+    setState({ showSpinner: false });
+  });
+
   return (
     <div>
-      <div className="homepage-container flex-col items-center justify-center">
+      <div
+        className={`homepage-container flex-col items-center justify-center  ${
+          navbarOpen ? "pt-60" : "pt-36"
+        }`}
+      >
         <div>
           <p className="homepage-title">
             Welcome and thank you for visiting my website!
@@ -21,11 +31,8 @@ function HomePage() {
           </div>
         </div>
         <div className="container mx-auto w-full bg-white p-16  text-black text-center">
-          <div className="divider">
-            <div className="mb-2 font-semibold">About me</div>
-            <div />
-          </div>
-
+          <p className="font-semibold text-3xl">About me</p>
+          <div className="divider" />
           <p>
             is blah blahMy name is blah blahMy name is is blah blahMy name is
             blah is blah blahMy name is blah blahMy name is is blah blahMy name

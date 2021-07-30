@@ -25,19 +25,19 @@ export default function Navigation() {
     <>
       <nav className={"navigation " + (navbarOpen ? "h-[170px]" : "")}>
         <div className="container mx-auto flex flex-wrap justify-between items-center">
-          <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <div className="w-full relative justify-between flex lg:w-auto lg:static lg:block lg:justify-start">
             <div className="title-container">
               <Image src="/seal.png" height={20} width={50} />
               <NavigationLink type="" toggle="homeToggled">
                 <p>Badseal Studios</p>
               </NavigationLink>
             </div>
-            <button
+            <div
               className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               onClick={() => setState({ navbarOpen: !navbarOpen })}
             >
               <FontAwesomeIcon icon={faBars} size="sm" />
-            </button>
+            </div>
           </div>
           <div
             className={
@@ -89,6 +89,7 @@ export default function Navigation() {
           onClick={() => {
             setState({
               icon: { ...RESET_ICON, [toggle]: true },
+              showSpinner: true,
             });
           }}
         >

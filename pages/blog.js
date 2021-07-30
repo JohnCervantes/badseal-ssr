@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { setState } from "../operations/mutation";
+import { useQuery } from "@apollo/client";
+import { readState } from "../operations/query";  
 export default function blog() {
+  const {
+    data: {
+      readState: { navbarOpen },
+    },
+  } = useQuery(readState("navbarOpen"));
+
+  useEffect(() => {
+    setState({ showSpinner: false });
+  }, []);
   return (
-    <div className="blog-container">
+    <div className={`blog-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
       <div className="post-container">
         <div className="post-card group">
           <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
