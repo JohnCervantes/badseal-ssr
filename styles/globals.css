@@ -34,7 +34,7 @@
 }
 
 .divider {
-  @apply  mx-auto border-blue-300 w-[150px] border-b-2 mb-5 mt-1 ;
+  @apply mx-auto border-blue-300 w-[150px] border-b-2 mb-5 mt-1;
 }
 
 .navigation-icon {
@@ -48,15 +48,14 @@
 }
 
 button {
-  @apply
-  bg-green-200
-  shadow-sm
-  border-gray-200
+  @apply bg-[#c2b280]
+  shadow-md
+  border-gray-300
   border-2
-  text-black
+  text-white
   rounded-lg py-2 px-4
-  hover:border-gray-400
-  mx-auto
+  hover:border-gray-50
+  mx-auto;
 }
 
 .grid-layout {
@@ -81,17 +80,17 @@ button {
 }
 
 .post-card {
-  @apply container overflow-hidden mx-auto flex flex-col w-[90%] h-auto border-2 my-6 sm:my-0 sm:mb-3 shadow-lg transition
+  @apply container overflow-hidden mx-auto flex flex-col w-[95%] h-auto border-2 my-6 sm:my-0 sm:mb-3 shadow-lg transition
   duration-100 ease-out
  hover:scale-105 cursor-pointer;
 }
 
 .post-container {
-  @apply w-full;
+  @apply w-[90%] mx-auto sm:w-[60%] pt-8;
 }
 
 .featured-container {
-  @apply w-[50%] h-[300px] border-2;
+  @apply w-[86%] sm:w-[35%] sm:h-[350px] border-2 mt-2 sm:mt-8 mx-auto; 
 }
 
 .footer {
@@ -111,9 +110,8 @@ button {
 }
 
 .modal-form {
-  @apply w-4/12
-    h-[85%]
-    w-[80%]
+  @apply h-[90%]
+    w-[90%]
     sm:w-[40%]
     overflow-y-auto
     bg-white
@@ -126,7 +124,7 @@ button {
     inset-0
     m-auto
     border
-    border-gray-500
+    border-gray-100
     z-50
     shadow-lg;
 }
@@ -167,9 +165,9 @@ label {
 
 .form-header,
 .homepage-title {
-  @apply text-green-900 
-    text-4xl 
-    mb-5 text-center;
+  @apply text-green-700 
+    text-4xl mb-1
+     text-center;
 }
 
 /* Carousel CSS */
@@ -326,8 +324,6 @@ label {
   opacity: 1;
 }
 
-
-
 .hover-trigger .hover-target {
   display: none;
 }
@@ -335,4 +331,3 @@ label {
 .hover-trigger:hover .hover-target {
   display: block;
 }
-

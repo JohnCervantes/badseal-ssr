@@ -17,6 +17,19 @@ export const ALL_PROJECTS = gql`
   }
 `;
 
+export const ALL_POST = gql`
+  query {
+    posts {
+      _id
+      banner
+      postName
+      content
+      date
+      shortDescription
+    }
+  }
+`;
+
 export function readState(fields) {
   return gql`query {
     readState @client {

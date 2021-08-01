@@ -25,7 +25,7 @@ export default function resume() {
     <div
       className={`overflow-hidden ${
         navbarOpen ? "pt-60" : "pt-36"
-      } sm:pt-48 py-3 flex min-h-screen bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center justify-center content-center`}
+      } sm:pt-44 py-3 sm:pb-10 flex min-h-screen bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 items-center justify-center content-center`}
     >
       <PDFViewer />;
     </div>

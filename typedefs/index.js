@@ -13,31 +13,35 @@ const typeDefs = gql`
     git: String!
   }
 
-  # type user {
-  #   _id: ID
-  #   password: String!
-  #   email: String!
-  #   firstName: String!
-  #   lastName: String!
-  #   phone: String
-  #   isAdmin: Boolean
-  #   registerDate: String!
-  #   token: String
-  # }
+  type post {
+    _id: ID
+    banner: String
+    postName: String!
+    date: String!
+    shortDescription: String!
+    content: String!
+  }
 
   type Query {
     projects: [project]
-    # users: [user]
-    # user(email: String!, password: String!): user
+    posts: [post]
   }
   type Mutation {
-    # addAnimal(
-    #   name: String!
-    #   description: String!
-    #   pic: String!
-    #   phone: String
-    #   email: String!
-    # ): animal
+    addPost(
+      banner: String
+      postName: String!
+      date: String!
+      shortDescription: String!
+      content: String!
+    ): post
+    updatePost(
+      _id: ID!
+      banner: String
+      postName: String
+      date: String
+      shortDescription: String
+      content: String
+    ): post
     addProject(
       thumbnail: String!
       image: String!

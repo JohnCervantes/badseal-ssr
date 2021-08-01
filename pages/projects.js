@@ -36,7 +36,10 @@ export default function projects({ projects, error }) {
         >
           <div className="text-blue-300 hover-trigger">
             <FontAwesomeIcon icon={faInfoCircle} size={"2x"} className="mr-1" />
-            <div className="absolute right-20 rounded bg-black w-[200px] hover-target p-3 z-50">For demo purposes, I made crud operations available in public. Please edit responsibly :)</div>
+            <div className="absolute right-20 rounded bg-black w-[200px] hover-target p-3 z-50">
+              Crud operations are available in public for demo purposes only.
+              Please edit responsibly :)
+            </div>
           </div>
           <button
             onClick={() =>
@@ -58,15 +61,17 @@ export default function projects({ projects, error }) {
                     src={project.thumbnail}
                   ></Image>
                 </div>
-                <div className="break-words w-[70%] ml-1 bg-white p-5">
-                  <p className="font-semibold mb-3">{project.projectName}</p>
-                  <p>{project.shortDescription}</p>
-                  <p className="font-thin">
-                    Technologies: {project.technology}
+                <div className="relative break-words w-[70%] bg-white px-4 py-1">
+                  <p className="font-bold mb-3 text-xl text-center">{project.projectName}</p>
+                  <p className="font-semibold">{project.shortDescription}</p>
+                <div className="absolute bottom-1">
+                  <p className="font-light">
+                    {project.technology}
                   </p>
-                  <p className="font-thin">
-                    Completion status: {project.status}
+                  <p className="font-light">
+                    Status: {project.status}
                   </p>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -92,10 +97,9 @@ export async function getServerSideProps(context) {
     if (!data) {
       return { props: { projects: [], error } };
     }
-    const projects = data.projects;
     return {
       props: {
-        projects,
+        projects : data.projects,
       },
     };
   } catch (error) {

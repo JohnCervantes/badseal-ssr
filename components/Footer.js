@@ -17,7 +17,7 @@ export default function Footer() {
         className="border-2 group p-2 hover:border-white mb-3"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        <span className="group-hover:text-white">
+        <span className="group-hover:text-white group-hover:cursor-pointer">
           <FontAwesomeIcon icon={faArrowUp} /> {"  "}
           To the top
         </span>

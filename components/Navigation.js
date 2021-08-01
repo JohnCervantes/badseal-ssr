@@ -27,9 +27,9 @@ export default function Navigation() {
         <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="w-full relative justify-between flex lg:w-auto lg:static lg:block lg:justify-start">
             <div className="title-container">
-              <Image src="/seal.png" height={20} width={50} />
+              <Image src="/seal.png" height={20} width={50} quality="100" />
               <NavigationLink type="" toggle="homeToggled">
-                <p>Badseal Studios</p>
+                <p className="text-3xl">Badseal Studios</p>
               </NavigationLink>
             </div>
             <div

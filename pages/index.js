@@ -23,10 +23,10 @@ function HomePage() {
         }`}
       >
         <div>
-          <p className="homepage-title">
+          <p className="homepage-title mb-5">
             Welcome and thank you for visiting my website!
           </p>
-          <div className="relative mx-auto container w-full mb-1 h-[300px] sm:w-[300px] sm:h-[450px]">
+          <div className="relative mx-auto container w-full mb-1 h-[300px] sm:w-[300px] sm:h-[400px]">
             <Image src="/stock.jpg" layout="fill"></Image>
           </div>
         </div>

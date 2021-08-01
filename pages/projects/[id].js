@@ -5,17 +5,19 @@ import { readState } from "../../operations/query";
 import { useQuery } from "@apollo/client";
 import FeaturedEmblaCarousel from "../../components/Carousel/FeaturedCarousel";
 import { setState, updateProject } from "../../operations/mutation";
-import { uploadPhotos } from "../../helpers/aws";
+import { uploadPhotos, uploadPhoto } from "../../helpers/aws";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 
 export default function Project() {
   const router = useRouter();
   const { id } = router.query;
   const [editMode, setEditMode] = useState(false);
   const [project, setProject] = useState(undefined);
-  const [projectName, setProjectName] = useState("");
+  const [uneditedProject, setUneditedProject] = useState(undefined);
   const [images, setImages] = useState({});
-  const [longDescription, setLongDescription] = useState("");
-  const [feature, setFeature] = useState("");
+  const [thumbnail, setThumbnail] = useState(undefined);
+
   const {
     data: {
       readState: { projects, navbarOpen },
@@ -24,56 +26,66 @@ export default function Project() {
 
   useEffect(() => {
     const proj = projects.find((p) => p._id === id);
-    setLongDescription(proj.longDescription);
-    setFeature(proj.feature);
-    setProjectName(proj.projectName);
+    setUneditedProject(proj);
     setProject(proj);
   }, [id, projects]);
 
   if (!project) {
-    return <p>loading...</p>;
+    return (
+      <div
+        className={`projects-container ${
+          navbarOpen ? "pt-60" : "pt-36"
+        } min-h-screen`}
+      />
+    );
   }
 
   if (editMode) {
     return editForm();
   }
-
   return (
     <div className={`projects-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
-      <div className="relative bg-white w-10/12 mx-auto text-center p-5">
+      <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
         <button
           className="absolute top-3 right-5"
           onClick={() => setEditMode(true)}
         >
           Edit
         </button>
-        <div className={"mb-2 font-semibold text-3xl text-center"}>
-          {projectName}
+        <div
+          className={"mb-2 font-semibold text-3xl text-center text-green-700"}
+        >
+          {uneditedProject.projectName}
         </div>
         <div className="divider" />
 
-        <FeaturedEmblaCarousel projectImages={project.image} />
+        <FeaturedEmblaCarousel projectImages={uneditedProject.image} />
 
         <div className="text-left p-5">
-          <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+          <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
             What is this project about?
           </p>
           <div className="divider" />
-          <p className="whitespace-pre-wrap">{project.longDescription}</p>
+          <p className="whitespace-pre-wrap">
+            {uneditedProject.longDescription}
+          </p>
 
-          <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+          <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
             What are the features of this project?
           </p>
           <div className="divider" />
-          <p className="whitespace-pre-wrap">{project.feature}</p>
+          <p className="whitespace-pre-wrap">{uneditedProject.feature}</p>
         </div>
+        <button onClick={() => window.open(uneditedProject.git, "_blank")}>
+          View source code <FontAwesomeIcon icon={faGithubSquare} size="lg" />
+        </button>
       </div>
     </div>
   );
   function editForm() {
     return (
       <div className={`homepage-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
-        <div className="relative bg-white w-10/12 mx-auto text-center p-5">
+        <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
           <button
             className=" absolute top-3 right-5 text-red-900"
             onClick={() => {
@@ -84,10 +96,12 @@ export default function Project() {
             Cancel
           </button>
           <textarea
-            className="overflow-hidden text-center w-[250px] resize-none text-3xl"
+            className="overflow-hidden text-center w-[250px] resize-none text-3xl text-green-700 "
             placeholder="Edit title..."
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
+            value={project.projectName}
+            onChange={(e) =>
+              setProject({ ...project, projectName: e.target.value })
+            }
             rows="1"
           ></textarea>
           <div className="divider" />
@@ -106,23 +120,24 @@ export default function Project() {
                 );
               })
             ) : (
-              <p>No images selected...</p>
+              <p>Select carousel images...</p>
             )}
           </div>
           <input
-            className="w-[30%] mt-3"
+            className="w-[70%] sm:w-[30%] mt-3"
             onClick={(e) => {
               e.target.value = null;
               setImages({});
             }}
             multiple
             type="file"
+            accept="image/*"
             onChange={(e) => {
               setImages(e.target.files);
             }}
           />
           <div className="text-left p-5">
-            <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
               {" "}
               What is this project about?
             </p>
@@ -130,45 +145,137 @@ export default function Project() {
             <textarea
               rows="10"
               onChange={(e) => {
-                setLongDescription(e.target.value);
+                setProject({ ...project, longDescription: e.target.value });
               }}
-              value={longDescription}
+              value={project.longDescription}
               placeholder="Edit full description..."
             />
-            <p className="mt-10 mb-2 font-semibold text-3xl text-center">
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700">
               What are the features of this project?
             </p>
             <div className="divider" />
             <textarea
               rows="10"
               onChange={(e) => {
-                setFeature(e.target.value);
+                setProject({ ...project, feature: e.target.value });
               }}
-              value={feature}
+              value={project.feature}
               placeholder="Edit features..."
             />
           </div>
+          <div>
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700">
+              Change thumbnail:
+            </p>
+            <div className="divider" />
+            <div className="flex items-center justify-center w-[80%] bg-gray-300 mx-auto h-[250px]">
+              <Image
+                src={
+                  thumbnail
+                    ? URL.createObjectURL(thumbnail.target.files[0])
+                    : project.thumbnail
+                }
+                width="400px"
+                height="200px"
+                unoptimized={true}
+              />
+            </div>
+            <input
+              className="w-[70%] sm:w-[30%] mt-3"
+              onClick={(e) => {
+                e.target.value = null;
+                setThumbnail(undefined);
+              }}
+              accept="image/*"
+              type="file"
+              onChange={(e) => {
+                setThumbnail(e);
+              }}
+            />
 
-          <button
-            onClick={async () => {
-              let imagesFileNames;
-              setState({ showSpinner: true });
-              if (images.length > 0) {
-                imagesFileNames = await uploadPhotos(images);
-              }
-              updateProject({
-                ...project,
-                feature,
-                longDescription,
-                projectName,
-                image: imagesFileNames ? imagesFileNames : project.image,
-              });
-              setEditMode(false);
-              setState({ showSpinner: false });
-            }}
-          >
-            Save
-          </button>
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+              Edit short description:
+            </p>
+            <div className="divider" />
+            <textarea
+              className="w-[50%]"
+              rows="4"
+              onChange={(e) => {
+                setProject({ ...project, shortDescription: e.target.value });
+              }}
+              value={project.shortDescription}
+              placeholder="Edit short description ..."
+            />
+
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+              Edit Technologies used:
+            </p>
+            <div className="divider" />
+            <textarea
+              className="w-[50%]"
+              rows="2"
+              onChange={(e) => {
+                setProject({ ...project, technology: e.target.value });
+              }}
+              value={project.technology}
+              placeholder="Edit technologies used..."
+            />
+
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+              Edit status:
+            </p>
+            <div className="divider" />
+            <textarea
+              className="w-[50%]"
+              rows="2"
+              onChange={(e) => {
+                setProject({ ...project, status: e.target.value });
+              }}
+              value={project.status}
+              placeholder="Edit technologies used..."
+            />
+
+            <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+              Edit Github page:
+            </p>
+            <div className="divider" />
+            <textarea
+              className="w-[50%]"
+              rows="2"
+              onChange={(e) => {
+                setProject({ ...project, git: e.target.value });
+              }}
+              value={project.git}
+              placeholder="Edit Github page link..."
+            />
+
+            <button
+              className="block mt-10"
+              onClick={async () => {
+                let imagesFileNames;
+                let updatedThumbnail;
+                setState({ showSpinner: true });
+                if (images.length > 0) {
+                  imagesFileNames = await uploadPhotos(images);
+                }
+                if (thumbnail) {
+                  updatedThumbnail = await uploadPhoto(thumbnail);
+                }
+                await updateProject({
+                  ...project,
+                  image: imagesFileNames ? imagesFileNames : project.image,
+                  thumbnail: updatedThumbnail
+                    ? updatedThumbnail
+                    : project.thumbnail,
+                });
+
+                setEditMode(false);
+                setState({ showSpinner: false });
+              }}
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     );

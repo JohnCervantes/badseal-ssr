@@ -43,5 +43,6 @@ export const state = makeVar({
   showToast: RESET_TOAST,
   navbarOpen: false,
   showModal: RESET_MODAL,
-  projects: []
+  projects: [], 
+  posts: []
 });

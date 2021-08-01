@@ -26,6 +26,8 @@ export async function uploadPhoto(e) {
 
   if (upload.ok) {
     console.log("Uploaded successfully!");
+    const url = getSignedUrl(filename);
+    return url;
   } else {
     console.error("Upload failed.");
   }
@@ -52,18 +54,18 @@ export async function uploadPhotos(images) {
 
     if (upload.ok) {
       console.log("Uploaded successfully!");
-      const url = await getSignedUrl(filename);
+      const url = getSignedUrl(filename);
       files.push({ [filename]: url });
     } else {
       console.error("Upload failed.");
     }
-  };
+  }
 
   return JSON.stringify(files);
 }
 
-export async function getSignedUrl(objectName) {
-  var url = await s3.getSignedUrl("getObject", {
+export function getSignedUrl(objectName) {
+  var url = s3.getSignedUrl("getObject", {
     Bucket: "badseal",
     Key: objectName,
     Expires: 518400,
