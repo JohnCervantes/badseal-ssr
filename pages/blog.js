@@ -8,6 +8,7 @@ import { ALL_POST, readState } from "../operations/query";
 import { faInfoCircle, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { getStandAloneApolloClient } from "./_app";
 import Link from "next/link";
+import connectMongo from "../dbConfig/mongoose";
 
 export default function blog({ posts, error }) {
   const {
@@ -103,6 +104,7 @@ export default function blog({ posts, error }) {
 
 export async function getServerSideProps(context) {
   try {
+    await connectMongo();
     const client = getStandAloneApolloClient();
     const { data, error } = await client.query(
       { query: ALL_POST },

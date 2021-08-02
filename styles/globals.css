@@ -34,7 +34,7 @@
 }
 
 .divider {
-  @apply mx-auto border-blue-300 w-[150px] border-b-2 mb-5 mt-1;
+  @apply mx-auto border-blue-300 w-[150px] border-b-2 my-5;
 }
 
 .navigation-icon {

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useQuery } from "@apollo/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import connectMongo from "../dbConfig/mongoose";
 
 export default function projects({ projects, error }) {
   const {
@@ -86,6 +87,7 @@ export default function projects({ projects, error }) {
 
 export async function getServerSideProps(context) {
   try {
+    await connectMongo();
     const client = getStandAloneApolloClient();
     const { data, error } = await client.query(
       { query: ALL_PROJECTS },

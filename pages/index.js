@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { readState } from "../operations/query";
 import { useEffect } from "react";
 import { setState } from "../operations/mutation";
+import connectMongo from "../dbConfig/mongoose";
 
 function HomePage() {
   const {
@@ -26,24 +27,50 @@ function HomePage() {
           <p className="homepage-title mb-5">
             Welcome and thank you for visiting my website!
           </p>
-          <div className="relative mx-auto container w-full mb-1 h-[300px] sm:w-[300px] sm:h-[400px]">
-            <Image src="/stock.jpg" layout="fill"></Image>
+          <div className="relative mx-auto container w-full mb-5 h-[200px] w-[190px] sm:w-[200px] sm:h-[200px]">
+            <Image src="/john.jpg" quality="100" layout="fill" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="></Image>
           </div>
         </div>
-        <div className="container mx-auto w-full bg-white p-16  text-black text-center">
-          <p className="font-semibold text-3xl">About me</p>
+        <div className="container mx-auto w-full bg-white p-16  text-black text-left">
+          <p className="font-semibold text-3xl text-center">About me</p>
           <div className="divider" />
           <p>
-            is blah blahMy name is blah blahMy name is is blah blahMy name is
-            blah is blah blahMy name is blah blahMy name is is blah blahMy name
-            is blah is blah blahMy name is blah blahMy name is is blah blahMy
-            name is blah is blah blahMy name is blah blahMy name is is blah
-            blahMy name is blah is blah blahMy name is blah blahMy name is is
-            blah blahMy name is blah is blah blahMy name is blah blahMy name is
-            is blah blahMy name is blah is blah blahMy name is blah blahMy name
-            is is blah blahMy name is blah blahMy name is is blah blahMy name is
-            blah blahMy name is is blah
+            John is a software developer with a bachelor’s degree in Computer
+            Science. The exposure to various technologies he received in the
+            workplace and school solidified his career choice in the field of
+            information technology. The aspect that he enjoys most about
+            technology is the level of creativity and passion that developers
+            applies to their projects. He is constantly sharpening his skills by
+            working on open source and personal projects. His hobbies are
+            playing video games, watching movies and TV shows.
+            <br />
+            <br />I built this website with these goals in my mind. I want to
+            discuss the latest and upcoming trends in the information technology
+            world. I also would like to share my work with everyone, so I can
+            build connections with others and also to collaborate with other
+            programmers. If you have any questions or concerns, don't hesitate to connect with me!
           </p>
+          <div className="flex sm:flex-row flex-col pt-5">
+            <div className="sm:w-[50%] h-[300px] sm:h-auto relative">
+              <Image src="/hackers-island.png" quality="100" layout="fill" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=" />
+            </div>
+            <div className="mt-5 sm:mt-0 sm:w-[50%] bg-blue-100">
+              <p className="font-semibold text-2xl pl-5">Hacker's Island</p>
+              <div className="divider ml-5" />
+              <p className="p-5">
+                One of his most significant projects is called Hacker’s Island,
+                which was an educational video game that teaches the players on
+                how they can protect their anonymity against common
+                cyber-attacks. The idea was to increase the public awareness of
+                cybercrimes and cybersecurity. After conducting research on many
+                forms of common cyberattacks, he used this knowledge and turned
+                it into an educational video game. He improved his teamwork and
+                communication skills by meeting deadlines and holding his team
+                accountable. When John finds a problem that he is passionate
+                about, he is determined and focused on solving it.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -51,3 +78,28 @@ function HomePage() {
 }
 
 export default HomePage;
+
+export async function getServerSideProps(context) {
+  try {
+    await connectMongo();
+    return { props: {} };
+    //   const client = getStandAloneApolloClient();
+    //   const { data, error } = await client.query(
+    //     { query: ALL_POST },
+    //     {
+    //       fetchPolicy: "no-cache",
+    //     }
+    //   );
+
+    //   if (!data) {
+    //     return { props: { projects: [], error } };
+    //   }
+    //   return {
+    //     props: {
+    //       posts: data.posts,
+    //     },
+    //   };
+  } catch (error) {
+    return { props: { error: error.message } };
+  }
+}

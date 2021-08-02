@@ -7,20 +7,18 @@ import { setState } from "../operations/mutation";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 export default function PDFViewer() {
-  const [numPages, setNumPages] = useState(null);
 
-  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
-    setNumPages(nextNumPages);
+  function onDocumentLoadSuccess() {
     setState({ showSpinner: false });
   }
 
   return (
     <Document
-      file="/fakeresume.pdf"
+      file="/resume.pdf"
       loading=""
       onLoadSuccess={onDocumentLoadSuccess}
     >
-      <Page pageNumber={numPages} />
+      <Page pageNumber={1} />
     </Document>
   );
 }

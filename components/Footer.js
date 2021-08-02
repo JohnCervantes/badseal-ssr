@@ -25,26 +25,31 @@ export default function Footer() {
       <div>
         <FontAwesomeIcon
           icon={faEnvelope}
+          onClick={() => window.open("mailto:JohnCervantes@protonmail.com", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
         <FontAwesomeIcon
           icon={faGithubSquare}
+          onClick={() => window.open("https://github.com/JohnCervantes", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
         <FontAwesomeIcon
           icon={faLinkedin}
+          onClick={() => window.open("https://www.linkedin.com/in/j-cervantes/", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
         <FontAwesomeIcon
           icon={faYoutubeSquare}
+          onClick={() => window.open("https://www.youtube.com/user/vocalists5555/featured", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
         <FontAwesomeIcon
           icon={faTwitterSquare}
+          onClick={() => window.open("https://twitter.com/vocalistx", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
