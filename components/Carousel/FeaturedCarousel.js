@@ -7,7 +7,7 @@ import Image from "next/image";
 const AUTOPLAY_INTERVAL = 10000;
 const PARALLAX_FACTOR = 0.8;
 
-function FeaturedEmblaCarousel({projectImages}) {
+function FeaturedEmblaCarousel({ projectImages }) {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: false,
     dragFree: true,
@@ -21,7 +21,7 @@ function FeaturedEmblaCarousel({projectImages}) {
     setPrevBtnEnabled(embla.canScrollPrev());
     setNextBtnEnabled(embla.canScrollNext());
   }, [embla]);
-  
+
   const autoplay = useCallback(() => {
     if (!embla) return;
     if (embla.canScrollNext()) {
@@ -33,8 +33,14 @@ function FeaturedEmblaCarousel({projectImages}) {
 
   const { play, stop } = useRecursiveTimeout(autoplay, AUTOPLAY_INTERVAL);
 
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla, stop]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla, stop]);
+  const scrollPrev = useCallback(
+    () => embla && embla.scrollPrev(),
+    [embla, stop]
+  );
+  const scrollNext = useCallback(
+    () => embla && embla.scrollNext(),
+    [embla, stop]
+  );
 
   const onScroll = useCallback(() => {
     if (!embla) return;
@@ -59,7 +65,6 @@ function FeaturedEmblaCarousel({projectImages}) {
       return diffToTarget * (-1 / PARALLAX_FACTOR) * 100;
     });
     setParallaxValues(styles);
-
   }, [embla, setParallaxValues]);
 
   useEffect(() => {
@@ -89,7 +94,10 @@ function FeaturedEmblaCarousel({projectImages}) {
                     // width="350px"
                     // height="200px"
                     src={image[Object.keys(image)[0]]}
-                    quality="100" 
+                    quality="100"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+
                     //lurDataURL={image.blurDataURL}
                     //alt="Picture of the missing pet"
                     //placeholder="blur"

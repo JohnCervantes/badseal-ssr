@@ -50,7 +50,6 @@ export default function projects({ projects, error }) {
             Add+
           </button>
         </div>
-
         {projectsVar.map((project) => {
           return (
             <Link href={`/projects/${project._id}`} key={project._id}>
@@ -60,19 +59,22 @@ export default function projects({ projects, error }) {
                     className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
                     layout="fill"
                     src={project.thumbnail}
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                    quality="100"
                   ></Image>
                 </div>
                 <div className="relative break-words w-[70%] bg-white px-4 py-1">
-                  <p className="font-bold mb-3 text-xl text-center">{project.projectName}</p>
+                  <p className="font-bold mb-3 text-xl text-center">
+                    {project.projectName}
+                  </p>
+                  <div className="divider m-0 mx-auto" />
+
                   <p className="font-semibold">{project.shortDescription}</p>
-                <div className="absolute bottom-1">
-                  <p className="font-light">
-                    {project.technology}
-                  </p>
-                  <p className="font-light">
-                    Status: {project.status}
-                  </p>
-                  </div>
+                  <div className="absolute bottom-1">
+                    <p className="font-light ">{project.technology}</p>
+                    <p className="font-light">Status: {project.status}</p>
+                  </div>  
                 </div>
               </div>
             </Link>
@@ -81,7 +83,7 @@ export default function projects({ projects, error }) {
       </div>
     );
   } else {
-    return <p className="projects-container min-h-screen"></p>;
+    return <div className="projects-container min-h-screen" />;
   }
 }
 
@@ -101,7 +103,7 @@ export async function getServerSideProps(context) {
     }
     return {
       props: {
-        projects : data.projects,
+        projects: data.projects,
       },
     };
   } catch (error) {

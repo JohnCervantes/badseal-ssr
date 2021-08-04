@@ -61,7 +61,7 @@ export default function Project() {
 
         <FeaturedEmblaCarousel projectImages={uneditedProject.image} />
 
-        <div className="text-left p-5">
+        <div className="text-left p-5 mb-10">
           <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
             What is this project about?
           </p>

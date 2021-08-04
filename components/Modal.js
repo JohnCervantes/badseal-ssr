@@ -220,7 +220,7 @@ function Modal() {
           <label>Github page:</label>
           <input
             type="text"
-            name="status"
+            name="git"
             placeholder="Add github page link..."
             onChange={projectForm.handleChange}
           />

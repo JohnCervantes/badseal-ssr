@@ -1,5 +1,5 @@
 # badseal-ssr
-## https://badseal-ssr.vercel.app/
+## https://badseal-studios.vercel.app/
 
 ## what is this project about?
 + This is a revamped version of my portfolio website. I'm replacing django with next.js stack.

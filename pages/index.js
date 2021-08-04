@@ -28,7 +28,13 @@ function HomePage() {
             Welcome and thank you for visiting my website!
           </p>
           <div className="relative mx-auto container w-full mb-5 h-[200px] w-[190px] sm:w-[200px] sm:h-[200px]">
-            <Image src="/john.jpg" quality="100" layout="fill" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="></Image>
+            <Image
+              src="/john.jpg"
+              quality="100"
+              layout="fill"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+            ></Image>
           </div>
         </div>
         <div className="container mx-auto w-full bg-white p-16  text-black text-left">
@@ -48,15 +54,22 @@ function HomePage() {
             discuss the latest and upcoming trends in the information technology
             world. I also would like to share my work with everyone, so I can
             build connections with others and also to collaborate with other
-            programmers. If you have any questions or concerns, don't hesitate to connect with me!
+            programmers. If you have any questions or concerns, don't hesitate
+            to connect with me!
           </p>
           <div className="flex sm:flex-row flex-col pt-5">
             <div className="sm:w-[50%] h-[300px] sm:h-auto relative">
-              <Image src="/hackers-island.png" quality="100" layout="fill" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=" />
+              <Image
+                src="/hackers-island.png"
+                quality="100"
+                layout="fill"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+              />
             </div>
             <div className="mt-5 sm:mt-0 sm:w-[50%] bg-blue-100">
-              <p className="font-semibold text-2xl pl-5">Hacker's Island</p>
-              <div className="divider ml-5" />
+              <p className="font-semibold text-2xl sm:pl-5 text-center sm:text-left">Hacker's Island</p>
+              <div className="divider mx-auto sm:ml-5" />
               <p className="p-5">
                 One of his most significant projects is called Hacker’s Island,
                 which was an educational video game that teaches the players on
@@ -65,9 +78,10 @@ function HomePage() {
                 cybercrimes and cybersecurity. After conducting research on many
                 forms of common cyberattacks, he used this knowledge and turned
                 it into an educational video game. He improved his teamwork and
-                communication skills by meeting deadlines and holding his team
-                accountable. When John finds a problem that he is passionate
-                about, he is determined and focused on solving it.
+                communication skills by actively engaging and coordinating with
+                everyone on the team. When John encounters an issue with his
+                code, he is determined and focused on finding solutions to solve
+                it.
               </p>
             </div>
           </div>

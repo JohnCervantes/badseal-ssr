@@ -74,7 +74,7 @@ button {
 }
 
 .project-card {
-  @apply overflow-hidden container mx-auto flex w-[350px] h-[200px] border-2 my-3 shadow-lg rounded-lg transition
+  @apply overflow-hidden container mx-auto flex w-[380px] h-[220px] border-2 my-3 shadow-lg rounded-lg transition
   duration-100 ease-out
  hover:scale-105 cursor-pointer;
 }
@@ -174,7 +174,7 @@ label {
 
 .embla {
   position: relative;
-  background-color: #f7f7f7;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
   padding: 20px;
   max-width: 670px;
   margin-left: auto;
@@ -212,7 +212,7 @@ label {
 
 .embla__slide__inner {
   position: relative;
-  height: 190px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
