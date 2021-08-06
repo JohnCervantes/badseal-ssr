@@ -52,7 +52,12 @@ export default function blog({ posts, error }) {
             <Link href={`/blog/${post._id}`} key={post._id}>
               <div className="post-card group">
                 <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
-                  <Image src={post.banner} layout="fill"></Image>
+                  <Image
+                    src={post.banner}
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                  />
                 </div>
                 <div className="p-3 relative">
                   <p className="font-semibold text-2xl">{post.postName} </p>
@@ -62,7 +67,7 @@ export default function blog({ posts, error }) {
                       icon={faCalendar}
                       size="xs"
                     />
-                    {Date(post.date).toString().substring(0, 15)}
+                    {new Date(Number(post.date)).toString().substring(0, 15)}
                   </p>
                   <p className="text-justify mb-7">
                     {post.shortDescription}
@@ -82,17 +87,24 @@ export default function blog({ posts, error }) {
         })}
       </div>
       <div className="featured-container divide-y divide-white">
-        <p className="text-2xl text-center text-white bg-[#c2b280]">Featured</p>
+        <p className="text-2xl text-center w-[150px] mx-auto m-1 text-white bg-[#c2b280]">
+          Featured
+        </p>
         {postsVar.slice(0, 5).map((post) => {
           return (
             <Link href={`/blog/${post._id}`} key={post._id}>
               <div className="flex h-[75px] p-1 group hover:cursor-pointer">
                 <div className="relative max-h-[75px] w-[150px]">
-                  <Image src={post.banner} layout="fill" />
+                  <Image
+                    src={post.banner}
+                    layout="fill"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                  />
                 </div>
-                <p className="w-full p-1 max-h-[75px] overflow-hidden text-lg font-medium group-hover:text-yellow-500 group-hover:underline text-center">
-                  {post.postName}
-                </p>
+                <div className="flex justify-center items-center w-full p-1 max-h-[75px] overflow-hidden text-lg font-medium group-hover:text-yellow-500 group-hover:underline text-center">
+                  <p>{post.postName}</p>
+                </div>
               </div>
             </Link>
           );

@@ -26,12 +26,12 @@ export default function projects({ projects, error }) {
   if (projectsVar.length > 0) {
     return (
       <div
-        className={`relative projects-container grid-layout ${
+        className={`relative projects-container ${
           navbarOpen ? "pt-64" : "pt-40"
         }`}
       >
         <div
-          className={`flex justify-center items-center  absolute ${
+          className={`flex justify-center absolute ${
             navbarOpen ? "top-52" : "top-28"
           } right-5 sm:top-28`}
         >
@@ -50,36 +50,38 @@ export default function projects({ projects, error }) {
             Add+
           </button>
         </div>
-        {projectsVar.map((project) => {
-          return (
-            <Link href={`/projects/${project._id}`} key={project._id}>
-              <div className="project-card group">
-                <div className="relative w-[200px] h-full">
-                  <Image
-                    className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
-                    layout="fill"
-                    src={project.thumbnail}
-                    placeholder="blur"
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                    quality="100"
-                  ></Image>
-                </div>
-                <div className="relative break-words w-[70%] bg-white px-4 py-1">
-                  <p className="font-bold mb-3 text-xl text-center">
-                    {project.projectName}
-                  </p>
-                  <div className="divider m-0 mx-auto" />
+        <div className="sm:w-[85%] grid-layout mx-auto">
+          {projectsVar.map((project) => {
+            return (
+              <Link href={`/projects/${project._id}`} key={project._id}>
+                <div className="project-card group">
+                  <div className="relative min-w-[170px] sm:min-w-[250px] h-full">
+                    <Image
+                      className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
+                      layout="fill"
+                      src={project.thumbnail}
+                      placeholder="blur"
+                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+                      quality="100"
+                    ></Image>
+                  </div>
+                  <div className="relative break-words bg-white px-4 py-1">
+                    <p className="font-bold mb-3 text-xl text-center">
+                      {project.projectName}
+                    </p>
+                    <div className="divider mb-1 sm:mb-3 mx-auto" />
 
-                  <p className="font-semibold">{project.shortDescription}</p>
-                  <div className="absolute bottom-1">
-                    <p className="font-light ">{project.technology}</p>
-                    <p className="font-light">Status: {project.status}</p>
-                  </div>  
+                    <p className="font-semibold">{project.shortDescription}</p>
+                    <div className="absolute bottom-1">
+                      <p className="font-light ">{project.technology}</p>
+                      <p className="font-light">Status: {project.status}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     );
   } else {

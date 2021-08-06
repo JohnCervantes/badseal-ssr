@@ -52,18 +52,18 @@ export default function Post() {
           Edit
         </button>
         <div
-          className={"mb-2 font-semibold text-3xl text-center text-green-700"}
+          className={"font-semibold text-3xl text-center text-green-700"}
         >
           {uneditedPost.postName}
         </div>
         <div className="divider" />
 
-        <div className="w-[80%] mx-auto flex justify-end font-light items-baseline text-green-900">
+        <div className="w-[80%] mx-auto flex justify-end font-light items-baseline text-green-900 mb-5">
           <FontAwesomeIcon className="mr-1" icon={faCalendar} size="xs" />
-          {Date(post.date).toString().substring(0, 15)}
+          {new Date(Number(post.date)).toString().substring(0, 15)}
         </div>
 
-        <div className="relative w-[80%] h-[200px] mx-auto">
+        <div className="relative w-[60%] h-[200px] mx-auto">
           <Image src={uneditedPost.banner} layout="fill" />
         </div>
 

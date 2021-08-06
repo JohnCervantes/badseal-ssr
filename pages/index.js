@@ -37,7 +37,7 @@ function HomePage() {
             ></Image>
           </div>
         </div>
-        <div className="container mx-auto w-full bg-white p-16  text-black text-left">
+        <div className="container mx-auto w-full bg-white px-10 py-16  text-black text-left">
           <p className="font-semibold text-3xl text-center">About me</p>
           <div className="divider" />
           <p>
