@@ -4,6 +4,7 @@ import { readState } from "../operations/query";
 import { useEffect } from "react";
 import { setState } from "../operations/mutation";
 import connectMongo from "../dbConfig/mongoose";
+import Head from "next/head";
 
 function HomePage() {
   const {
@@ -18,6 +19,13 @@ function HomePage() {
 
   return (
     <div>
+      <Head>
+        <title>Welcome - About me</title>
+        <meta
+          name="description"
+          content="Home page of the portfolio website developed by John Cervantes. It has basic information about him"
+        />
+      </Head>
       <div
         className={`homepage-container flex-col items-center justify-center  ${
           navbarOpen ? "pt-60" : "pt-36"
@@ -68,7 +76,9 @@ function HomePage() {
               />
             </div>
             <div className="mt-5 sm:mt-0 sm:w-[50%] bg-blue-100">
-              <p className="font-semibold text-2xl sm:pl-5 text-center sm:text-left">Hacker's Island</p>
+              <p className="font-semibold text-2xl sm:pl-5 text-center sm:text-left">
+                Hacker's Island
+              </p>
               <div className="divider mx-auto sm:ml-5" />
               <p className="p-5">
                 One of his most significant projects is called Hacker’s Island,

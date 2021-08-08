@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner";
 import Modal from "../components/Modal";
 import { createUploadLink } from "apollo-upload-client";
 import Toast from "../components/Toast";
+import Head from "next/head";
 
 export const client = new ApolloClient({
   ssrMode: typeof window === "undefined",
@@ -32,6 +33,9 @@ export const getStandAloneApolloClient = () => {
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <Navigation />
       <Spinner />
       <Modal />

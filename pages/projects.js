@@ -8,6 +8,7 @@ import { useQuery } from "@apollo/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import connectMongo from "../dbConfig/mongoose";
+import Head from "next/head";
 
 export default function projects({ projects, error }) {
   const {
@@ -30,6 +31,13 @@ export default function projects({ projects, error }) {
           navbarOpen ? "pt-64" : "pt-40"
         }`}
       >
+      <Head>
+        <title>Projects</title>
+        <meta
+          name="description"
+          content="Projects page of the portfolio website developed by John Cervantes."
+        />
+      </Head>
         <div
           className={`flex justify-center absolute ${
             navbarOpen ? "top-52" : "top-28"
@@ -37,9 +45,11 @@ export default function projects({ projects, error }) {
         >
           <div className="text-blue-300 hover-trigger">
             <FontAwesomeIcon icon={faInfoCircle} size={"2x"} className="mr-1" />
-            <div className="absolute right-20 rounded bg-black w-[200px] hover-target p-3 z-50">
+            <div className="absolute text-left right-5 rounded bg-black w-[300px] hover-target p-3 z-50">
               Crud operations are available in public for demo purposes only.
-              Please edit responsibly :)
+              Updating data will not be reflected to the front-end immediately
+              by design. Please be patient when
+              updating data and edit responsibly :)
             </div>
           </div>
           <button
@@ -89,7 +99,7 @@ export default function projects({ projects, error }) {
   }
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   try {
     await connectMongo();
     const client = getStandAloneApolloClient();
@@ -107,6 +117,7 @@ export async function getServerSideProps(context) {
       props: {
         projects: data.projects,
       },
+      revalidate: 1,
     };
   } catch (error) {
     return { props: { error: error.message } };

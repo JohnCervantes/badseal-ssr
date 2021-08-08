@@ -82,7 +82,7 @@ const resolvers = {
             technology,
             status,
             feature,
-            git
+            git,
           },
           {
             new: true,

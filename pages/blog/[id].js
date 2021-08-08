@@ -7,6 +7,7 @@ import { setState, updatePost } from "../../operations/mutation";
 import { uploadPhoto } from "../../helpers/aws";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Head from "next/head";
 
 export default function Post() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function Post() {
   useEffect(() => {
     const post = postsVar.find((p) => p._id === id);
     setPost(post);
-    setUneditedPost(post)
+    setUneditedPost(post);
   }, [id, postsVar]);
 
   if (!post) {
@@ -44,6 +45,13 @@ export default function Post() {
 
   return (
     <div className={`projects-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
+      <Head>
+        <title>Blog - {post.postName}</title>
+        <meta
+          name="description"
+          content="Blog page of the portfolio website developed by John Cervantes."
+        />
+      </Head>
       <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
         <button
           className="absolute top-3 right-5"
@@ -51,9 +59,7 @@ export default function Post() {
         >
           Edit
         </button>
-        <div
-          className={"font-semibold text-3xl text-center text-green-700"}
-        >
+        <div className={"font-semibold text-3xl text-center text-green-700"}>
           {uneditedPost.postName}
         </div>
         <div className="divider" />

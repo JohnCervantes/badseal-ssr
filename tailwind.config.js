@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       fontFamily: {
         elsie: ["Elsie Swash Caps", "sans-serif"],
+        openSans: ['Open Sang, sans-serif'],
       },
       animation: {
         bounce200: "bounce 1s infinite 200ms",

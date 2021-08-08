@@ -8,6 +8,7 @@ import { setState, updateProject } from "../../operations/mutation";
 import { uploadPhotos, uploadPhoto } from "../../helpers/aws";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
+import Head from "next/head";
 
 export default function Project() {
   const router = useRouter();
@@ -45,6 +46,13 @@ export default function Project() {
   }
   return (
     <div className={`projects-container ${navbarOpen ? "pt-60" : "pt-36"}`}>
+      <Head>
+        <title>Project - {project.projectName}</title>
+        <meta
+          name="description"
+          content="Project page of the portfolio website developed by John Cervantes."
+        />
+      </Head>
       <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
         <button
           className="absolute top-3 right-5"
