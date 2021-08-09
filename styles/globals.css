@@ -27,7 +27,7 @@
 }
 
 .navbar-links {
-  @apply flex w-full h-auto flex-col md:flex-row md:justify-end;
+  @apply flex w-full h-auto sm:max-h-[32px] flex-col sm:flex-row sm:justify-end;
 }
 
 .title-container {
@@ -39,7 +39,7 @@
 }
 
 .navigation-icon {
-  @apply invisible sm:visible;
+  @apply ml-1 invisible sm:visible sm:max-h-[32px];
 }
 
 .homepage-container,

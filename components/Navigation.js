@@ -21,11 +21,15 @@ export default function Navigation() {
     },
   } = useQuery(readState("icon, navbarOpen"));
 
+  if(navbarOpen ===  undefined){
+    return <></>
+  }
+
   return (
     <>
       <nav className={"navigation " + (navbarOpen ? "h-[170px]" : "")}>
         <div className="container mx-auto flex flex-wrap justify-between items-center">
-          <div className="w-full relative justify-between flex lg:w-auto lg:static lg:block lg:justify-start">
+          <div className="w-full relative justify-between flex sm:w-auto sm:static sm:block sm:justify-start">
             <div className="title-container">
               <Image src="/seal.png" height={20} width={50} quality="100" />
               <NavigationLink type="" toggle="homeToggled">
@@ -81,7 +85,7 @@ export default function Navigation() {
     return (
       <Link href={`/${props.type}`}>
         <a
-          className={`mr-3 ${
+          className={`flex items-center mr-3 ${
             router.pathname === `/${props.type}`
               ? "text-black"
               : "navigation-link"
@@ -93,8 +97,7 @@ export default function Navigation() {
             });
           }}
         >
-          {" "}
-          {props.children}{" "}
+          {props.children}
           <FontAwesomeIcon
             className={`navigation-icon ${props.type === "" ? "hidden" : ""}`}
             icon={icon[toggle] ? faAngleUp : faAngleDown}
