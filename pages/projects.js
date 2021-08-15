@@ -69,7 +69,7 @@ export default function projects({ projects, error }) {
                     <Image
                       className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
                       layout="fill"
-                      src={project.thumbnail}
+                      src={JSON.parse(project.thumbnail)[Object.keys(JSON.parse(project.thumbnail))[0]]}
                       placeholder="blur"
                       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
                       quality="100"

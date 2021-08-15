@@ -68,9 +68,10 @@ export default function Post() {
           <FontAwesomeIcon className="mr-1" icon={faCalendar} size="xs" />
           {new Date(Number(post.date)).toString().substring(0, 15)}
         </div>
+        
 
         <div className="relative w-[60%] h-[200px] mx-auto">
-          <Image src={uneditedPost.banner} layout="fill" />
+          <Image src={JSON.parse(uneditedPost.banner)[Object.keys(JSON.parse(uneditedPost.banner))[0]]} layout="fill" />
         </div>
 
         <div className="text-left px-5 py-10 whitespace-pre-wrap">

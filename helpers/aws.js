@@ -27,7 +27,7 @@ export async function uploadPhoto(e) {
   if (upload.ok) {
     console.log("Uploaded successfully!");
     const url = getSignedUrl(filename);
-    return url;
+    return JSON.stringify({ [filename]: url });
   } else {
     console.error("Upload failed.");
   }
@@ -68,7 +68,7 @@ export function getSignedUrl(objectName) {
   var url = s3.getSignedUrl("getObject", {
     Bucket: "badseal",
     Key: objectName,
-    Expires: 518400,
+    Expires: 600000,
   });
   return url;
 }

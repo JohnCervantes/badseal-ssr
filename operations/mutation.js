@@ -64,7 +64,7 @@ const ADD_POST = gql`
   }
 `;
 
-const UPDATE_PROJECT = gql`
+export const UPDATE_PROJECT = gql`
   mutation updateProject(
     $_id: ID!
     $thumbnail: String

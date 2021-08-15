@@ -63,7 +63,7 @@ export default function blog({ posts, error }) {
               <div className="post-card group">
                 <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
                   <Image
-                    src={post.banner}
+                    src={JSON.parse(post.banner)[Object.keys(JSON.parse(post.banner))[0]]}
                     layout="fill"
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
@@ -106,7 +106,7 @@ export default function blog({ posts, error }) {
               <div className="flex h-[75px] p-1 group hover:cursor-pointer">
                 <div className="relative max-h-[75px] w-[150px]">
                   <Image
-                    src={post.banner}
+                    src={JSON.parse(post.banner)[Object.keys(JSON.parse(post.banner))[0]]}
                     layout="fill"
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
