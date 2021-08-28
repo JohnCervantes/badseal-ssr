@@ -53,7 +53,7 @@ export default function Project() {
           content="Project page of the portfolio website developed by John Cervantes."
         />
       </Head>
-      <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
+      <div className="relative bg-white w-[95%] shadow-md mx-auto text-center py-20 px-2">
         <button
           className="absolute top-3 right-5"
           onClick={() => setEditMode(true)}

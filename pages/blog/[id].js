@@ -52,7 +52,7 @@ export default function Post() {
           content="Blog page of the portfolio website developed by John Cervantes."
         />
       </Head>
-      <div className="relative bg-white w-10/12 mx-auto text-center py-20 px-2">
+      <div className="relative bg-white w-[95%] shadow-md mx-auto text-center py-20 px-2">
         <button
           className="absolute top-3 right-5"
           onClick={() => setEditMode(true)}
@@ -70,7 +70,7 @@ export default function Post() {
         </div>
         
 
-        <div className="relative w-[60%] h-[200px] mx-auto">
+        <div className="relative w-[90%] sm:w-[55%] h-[200px] mx-auto">
           <Image src={JSON.parse(uneditedPost.banner)[Object.keys(JSON.parse(uneditedPost.banner))[0]]} layout="fill" />
         </div>
 

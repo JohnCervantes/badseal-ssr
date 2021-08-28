@@ -14,7 +14,7 @@ export const client = new ApolloClient({
   cache: cache,
   link: createUploadLink({
     uri:
-      process.env.REACT_APP_GRAPHQL_URL || "http://localhost:3000/api/graphql",
+      process.env.REACT_APP_GRAPHQL_URL || process.env.REACT_APP_LOCAL_GRAPHQL_URL,
   }),
 });
 
