@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import connectMongo from "../dbConfig/mongoose";
 import Head from "next/head";
+import { useInView } from "react-intersection-observer";
 
 export default function projects({ projects, error }) {
   const {
@@ -16,6 +17,12 @@ export default function projects({ projects, error }) {
       readState: { projects: projectsVar, navbarOpen },
     },
   } = useQuery(readState("projects, navbarOpen"));
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     if (error) return console.log("Errors: " + error);
@@ -31,13 +38,13 @@ export default function projects({ projects, error }) {
           navbarOpen ? "pt-64" : "pt-40"
         }`}
       >
-      <Head>
-        <title>Projects</title>
-        <meta
-          name="description"
-          content="Projects page of the portfolio website developed by John Cervantes."
-        />
-      </Head>
+        <Head>
+          <title>Projects</title>
+          <meta
+            name="description"
+            content="Projects page of the portfolio website developed by John Cervantes."
+          />
+        </Head>
         <div
           className={`flex justify-center absolute ${
             navbarOpen ? "top-52" : "top-28"
@@ -48,8 +55,8 @@ export default function projects({ projects, error }) {
             <div className="absolute text-left right-5 rounded bg-black w-[300px] hover-target p-3 z-50">
               Crud operations are available in public for demo purposes only.
               Updating data will not be reflected to the front-end immediately
-              by design. Please be patient when
-              updating data and edit responsibly :)
+              by design. Please be patient when updating data and edit
+              responsibly :)
             </div>
           </div>
           <button
@@ -63,13 +70,17 @@ export default function projects({ projects, error }) {
         <div className="sm:w-[85%] grid-layout mx-auto">
           {projectsVar.map((project) => {
             return (
-              <Link href={`/projects/${project._id}`} key={project._id}>
-                <div className="project-card group">
+              <Link  ref={ref} href={`/projects/${project._id}`} key={project._id}>
+                <div className="project-card group animate-fade-in-up">
                   <div className="relative min-w-[170px] sm:min-w-[250px] h-full">
                     <Image
                       className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
                       layout="fill"
-                      src={JSON.parse(project.thumbnail)[Object.keys(JSON.parse(project.thumbnail))[0]]}
+                      src={
+                        JSON.parse(project.thumbnail)[
+                          Object.keys(JSON.parse(project.thumbnail))[0]
+                        ]
+                      }
                       placeholder="blur"
                       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
                       quality="100"

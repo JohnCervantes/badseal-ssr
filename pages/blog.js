@@ -10,6 +10,7 @@ import { getStandAloneApolloClient } from "./_app";
 import Link from "next/link";
 import connectMongo from "../dbConfig/mongoose";
 import Head from "next/head";
+import { useInView } from "react-intersection-observer";
 
 export default function blog({ posts, error }) {
   const {
@@ -17,6 +18,12 @@ export default function blog({ posts, error }) {
       readState: { navbarOpen, posts: postsVar },
     },
   } = useQuery(readState("navbarOpen, posts"));
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     if (error) return console.error(error);
@@ -60,7 +67,7 @@ export default function blog({ posts, error }) {
         {postsVar.map((post) => {
           return (
             <Link href={`/blog/${post._id}`} key={post._id}>
-              <div className="post-card group">
+              <div ref={ref} className="post-card group animate-fade-in-up">
                 <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
                   <Image
                     src={JSON.parse(post.banner)[Object.keys(JSON.parse(post.banner))[0]]}

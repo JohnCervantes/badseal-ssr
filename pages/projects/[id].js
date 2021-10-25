@@ -9,6 +9,7 @@ import { uploadPhotos, uploadPhoto } from "../../helpers/aws";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
 import Head from "next/head";
+import { useInView } from "react-intersection-observer";
 
 export default function Project() {
   const router = useRouter();
@@ -18,6 +19,30 @@ export default function Project() {
   const [uneditedProject, setUneditedProject] = useState(undefined);
   const [images, setImages] = useState({});
   const [thumbnail, setThumbnail] = useState(undefined);
+
+  const { ref: titleRef, inView: titleView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const { ref: aboutRef, inView: aboutView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const { ref: featuresRef, inView: featuresView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const { ref: sourceCodeRef } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
 
   const {
     data: {
@@ -61,16 +86,30 @@ export default function Project() {
           Edit
         </button>
         <div
-          className={"mb-2 font-semibold text-3xl text-center text-green-700"}
+          ref={titleRef}
+          className={
+            "mb-2 font-semibold text-3xl text-center text-green-700" +
+            (titleView
+              ? " delay-300 animate-fade-in-right-to-left"
+              : " invisible")
+          }
         >
           {uneditedProject.projectName}
+          <div className="divider" />
         </div>
-        <div className="divider" />
 
         <FeaturedEmblaCarousel projectImages={uneditedProject.image} />
 
         <div className="text-left p-5 mb-10">
-          <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+          <p
+            ref={aboutRef}
+            className={
+              "mt-10 mb-2 font-semibold text-3xl text-center text-green-700" +
+              (aboutView
+                ? " delay-300 animate-fade-in-right-to-left"
+                : " invisible")
+            }
+          >
             What is this project about?
           </p>
           <div className="divider" />
@@ -78,13 +117,25 @@ export default function Project() {
             {uneditedProject.longDescription}
           </p>
 
-          <p className="mt-10 mb-2 font-semibold text-3xl text-center text-green-700 ">
+          <p
+            ref={featuresRef}
+            className={
+              "mt-10 mb-2 font-semibold text-3xl text-center text-green-700" +
+              (featuresView
+                ? " delay-300 animate-fade-in-right-to-left"
+                : " invisible")
+            }
+          >
             What are the features of this project?
           </p>
           <div className="divider" />
           <p className="whitespace-pre-wrap">{uneditedProject.feature}</p>
         </div>
-        <button onClick={() => window.open(uneditedProject.git, "_blank")}>
+        <button
+          ref={sourceCodeRef}
+          className="animate-fade-in-up"
+          onClick={() => window.open(uneditedProject.git, "_blank")}
+        >
           View source code <FontAwesomeIcon icon={faGithubSquare} size="lg" />
         </button>
       </div>

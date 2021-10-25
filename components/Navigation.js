@@ -30,7 +30,7 @@ export default function Navigation() {
       <nav className={"navigation " + (navbarOpen ? "h-[170px]" : "")}>
         <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="w-full relative justify-between flex sm:w-auto sm:static sm:block sm:justify-start">
-            <div className="title-container">
+            <div className="title-container animate-fade-in">
               <Image src="/seal.png" height={20} width={50} quality="100" />
               <NavigationLink type="" toggle="homeToggled">
                 <p className="text-3xl">Badseal Studios</p>
@@ -49,7 +49,7 @@ export default function Navigation() {
               (navbarOpen ? "flex" : " hidden")
             }
           >
-            <div className="navbar-links">
+            <div className="navbar-links  animate-fade-in">
               <NavigationLink
                 // key={icon["projectsToggled"]}
                 type="projects"

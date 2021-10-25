@@ -7,8 +7,39 @@ import connectMongo from "../dbConfig/mongoose";
 import Head from "next/head";
 import { getSignedUrl } from "../helpers/aws";
 import { getStandAloneApolloClient } from "./_app";
+import { useInView } from "react-intersection-observer";
 
 export default function HomePage() {
+  const {
+    ref: firstSectionRef,
+    inView: firstSectionInView,
+    entry: firstSectionEntry,
+  } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const {
+    ref: secondSectionRef,
+    inView: secondSectionInView,
+    entry: secondSectionEntry,
+  } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
+  const {
+    ref: thirdSectionRef,
+    inView: thirdSectionInView,
+    entry: thirdSectionEntry,
+  } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   const {
     data: {
       readState: { navbarOpen },
@@ -33,11 +64,22 @@ export default function HomePage() {
           navbarOpen ? "pt-60" : "pt-36"
         }`}
       >
-        <div>
-          <p className="homepage-title mb-5">
+        <div ref={firstSectionRef}>
+          <p
+            className={
+              "homepage-title mb-5" +
+              (firstSectionInView
+                ? " delay-300 animate-fade-in-right-to-left"
+                : " invisible")
+            }
+          >
             Welcome and thank you for visiting my website!
           </p>
-          <div className="relative mx-auto container w-full mb-5 h-[200px] w-[190px] sm:w-[200px] sm:h-[200px]">
+          <div
+            className={
+              "relative mx-auto container w-full mb-5 h-[200px] w-[190px] sm:w-[200px] sm:h-[200px] animate-fade-in-up"
+            }
+          >
             <Image
               src="/john.jpg"
               quality="100"
@@ -47,9 +89,20 @@ export default function HomePage() {
             ></Image>
           </div>
         </div>
-        <div className="container mx-auto w-full bg-white px-10 py-16  text-black text-left">
-          <p className="font-semibold text-3xl text-center">About me</p>
-          <div className="divider" />
+        <div
+          ref={secondSectionRef}
+          className="container mx-auto w-full bg-white px-10 py-16  text-black text-left"
+        >
+          <div
+            className={
+              secondSectionInView
+                ? " delay-300 animate-fade-in-right-to-left"
+                : " invisible"
+            }
+          >
+            <p className={"font-semibold text-3xl text-center"}>About me</p>
+            <div className="divider" />
+          </div>
           <p>
             John is a software developer with a bachelor’s degree in Computer
             Science. The exposure to various technologies he received in the
@@ -67,8 +120,15 @@ export default function HomePage() {
             programmers. If you have any questions or concerns, don't hesitate
             to connect with me!
           </p>
-          <div className="flex sm:flex-row flex-col pt-5">
-            <div className="sm:w-[50%] h-[300px] sm:h-auto relative">
+          <div ref={thirdSectionRef} className="flex sm:flex-row flex-col pt-5">
+            <div
+              className={
+                "sm:w-[50%] h-[300px] sm:h-auto relative" +
+                (thirdSectionInView
+                  ? " delay-300 animate-fade-in-up"
+                  : " invisible")
+              }
+            >
               <Image
                 src="/hackers-island.png"
                 quality="100"
@@ -77,24 +137,32 @@ export default function HomePage() {
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
               />
             </div>
-            <div className="mt-5 sm:mt-0 sm:w-[50%] bg-blue-100">
-              <p className="font-semibold text-2xl sm:pl-5 text-center sm:text-left">
-                Hacker's Island
-              </p>
-              <div className="divider mx-auto sm:ml-5" />
-              <p className="p-5">
-                One of his most significant projects is called Hacker’s Island,
-                which was an educational video game that teaches the players on
-                how they can protect their anonymity against common
-                cyber-attacks. The idea was to increase the public awareness of
-                cybercrimes and cybersecurity. After conducting research on many
-                forms of common cyberattacks, he used this knowledge and turned
-                it into an educational video game. He improved his teamwork and
-                communication skills by actively engaging and coordinating with
-                everyone on the team. When John encounters an issue with his
-                code, he is determined and focused on finding solutions to solve
-                it.
-              </p>
+            <div className={"mt-5 sm:mt-0 sm:w-[50%] bg-blue-100"}>
+              <div
+                className={
+                  thirdSectionInView
+                    ? " delay-300 animate-fade-in-right-to-left"
+                    : " invisible"
+                }
+              >
+                <p className="font-semibold text-2xl sm:pl-5 text-center sm:text-left">
+                  Hacker's Island
+                </p>
+                <div className="divider mx-auto sm:ml-5" />
+                <p className="p-5">
+                  One of his most significant projects is called Hacker’s
+                  Island, which was an educational video game that teaches the
+                  players on how they can protect their anonymity against common
+                  cyber-attacks. The idea was to increase the public awareness
+                  of cybercrimes and cybersecurity. After conducting research on
+                  many forms of common cyberattacks, he used this knowledge and
+                  turned it into an educational video game. He improved his
+                  teamwork and communication skills by actively engaging and
+                  coordinating with everyone on the team. When John encounters
+                  an issue with his code, he is determined and focused on
+                  finding solutions to solve it.
+                </p>
+              </div>
             </div>
           </div>
         </div>

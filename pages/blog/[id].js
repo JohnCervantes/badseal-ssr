@@ -8,6 +8,7 @@ import { uploadPhoto } from "../../helpers/aws";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
+import { useInView } from "react-intersection-observer";
 
 export default function Post() {
   const router = useRouter();
@@ -22,6 +23,12 @@ export default function Post() {
       readState: { posts: postsVar, navbarOpen },
     },
   } = useQuery(readState("posts, navbarOpen"));
+
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     const post = postsVar.find((p) => p._id === id);
@@ -59,19 +66,31 @@ export default function Post() {
         >
           Edit
         </button>
-        <div className={"font-semibold text-3xl text-center text-green-700"}>
+        <div
+          ref={ref}
+          className={
+            "font-semibold text-3xl text-center text-green-700" +
+            (inView ? " delay-300 animate-fade-in-right-to-left" : " invisible")
+          }
+        >
           {uneditedPost.postName}
+          <div className="divider" />
         </div>
-        <div className="divider" />
 
         <div className="w-[80%] mx-auto flex justify-end font-light items-baseline text-green-900 mb-5">
           <FontAwesomeIcon className="mr-1" icon={faCalendar} size="xs" />
           {new Date(Number(post.date)).toString().substring(0, 15)}
         </div>
-        
 
         <div className="relative w-[90%] sm:w-[55%] h-[200px] mx-auto">
-          <Image src={JSON.parse(uneditedPost.banner)[Object.keys(JSON.parse(uneditedPost.banner))[0]]} layout="fill" />
+          <Image
+            src={
+              JSON.parse(uneditedPost.banner)[
+                Object.keys(JSON.parse(uneditedPost.banner))[0]
+              ]
+            }
+            layout="fill"
+          />
         </div>
 
         <div className="text-left px-5 py-10 whitespace-pre-wrap">
