@@ -8,6 +8,7 @@ import { setState, updateProject } from "../../operations/mutation";
 import { uploadPhotos, uploadPhoto } from "../../helpers/aws";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubSquare } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { useInView } from "react-intersection-observer";
 
@@ -138,6 +139,15 @@ export default function Project() {
         >
           View source code <FontAwesomeIcon icon={faGithubSquare} size="lg" />
         </button>
+        {uneditedProject.URL && uneditedProject.URL !== "" ? (
+          <button
+            ref={sourceCodeRef}
+            className="animate-fade-in-up"
+            onClick={() => window.open(uneditedProject.URL, "_blank")}
+          >
+           View application <FontAwesomeIcon icon={faGlobe} size="lg" />
+          </button>
+        ) : undefined}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ const typeDefs = gql`
     status: String!
     feature: String!
     git: String!
+    URL: String
   }
 
   type post {

@@ -10,6 +10,7 @@ const project = new mongoose.Schema({
   status: { type: String, required: true },
   feature: {type: String, required: true},
   git: { type: String, required: true },
+  URL: { type: String, required: false },
 });
 
 

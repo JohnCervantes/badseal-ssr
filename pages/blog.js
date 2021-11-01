@@ -49,7 +49,7 @@ export default function blog({ posts, error }) {
         <div className="text-blue-300 hover-trigger">
           <FontAwesomeIcon icon={faInfoCircle} size={"2x"} className="mr-1" />
           <div className="absolute right-5 rounded bg-black w-[300px] hover-target p-3 z-50">
-            Crud operations are available in public for demo purposes only.
+            Crud operations are available in public intentionally for demo purposes only.
             Updating data will not be reflected in the front-end immediately by
             design. Please be patient when updating
             data and edit responsibly :)

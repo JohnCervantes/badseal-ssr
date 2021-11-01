@@ -13,6 +13,7 @@ export const ALL_PROJECTS = gql`
       status
       feature
       git
+      URL
     }
   }
 `;

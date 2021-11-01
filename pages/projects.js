@@ -53,7 +53,7 @@ export default function projects({ projects, error }) {
           <div className="text-blue-300 hover-trigger">
             <FontAwesomeIcon icon={faInfoCircle} size={"2x"} className="mr-1" />
             <div className="absolute text-left right-5 rounded bg-black w-[300px] hover-target p-3 z-50">
-              Crud operations are available in public for demo purposes only.
+              Crud operations are available in public intentionally for demo purposes only.
               Updating data will not be reflected to the front-end immediately
               by design. Please be patient when updating data and edit
               responsibly :)
@@ -70,8 +70,8 @@ export default function projects({ projects, error }) {
         <div className="sm:w-[85%] grid-layout mx-auto">
           {projectsVar.map((project) => {
             return (
-              <Link  ref={ref} href={`/projects/${project._id}`} key={project._id}>
-                <div className="project-card group animate-fade-in-up">
+              <Link   href={`/projects/${project._id}`} key={project._id}>
+                <div ref={ref} className="project-card group animate-fade-in-up">
                   <div className="relative min-w-[170px] sm:min-w-[250px] h-full">
                     <Image
                       className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
