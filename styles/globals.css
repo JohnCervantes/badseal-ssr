@@ -177,7 +177,7 @@ label {
   position: relative;
   background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
   padding: 20px;
-  max-width: 670px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -213,7 +213,7 @@ label {
 
 .embla__slide__inner {
   position: relative;
-  height: 250px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
