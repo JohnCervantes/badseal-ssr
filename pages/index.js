@@ -56,7 +56,7 @@ export default function HomePage() {
         <title>Welcome - About me</title>
         <meta
           name="description"
-          content="Home page of the portfolio website developed by John Cervantes. It has basic information about him"
+          content="The official site of the Badseal Studios developed by John Cervantes. Find out about new projects, blog posts, and more."
         />
       </Head>
       <div
@@ -231,7 +231,7 @@ export async function getStaticProps(context) {
       props: {
         projects,
       },
-      revalidate: 518400,
+      revalidate: 318400,
     };
   } catch (error) {
     return { props: { error: error.message } };

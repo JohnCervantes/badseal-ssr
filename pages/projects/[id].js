@@ -132,13 +132,13 @@ export default function Project() {
           <div className="divider" />
           <p className="whitespace-pre-wrap">{uneditedProject.feature}</p>
         </div>
-        <button
+        {/* <button
           ref={sourceCodeRef}
           className="animate-fade-in-up"
           onClick={() => window.open(uneditedProject.git, "_blank")}
         >
           View source code <FontAwesomeIcon icon={faGithubSquare} size="lg" />
-        </button>
+        </button> */}
         {uneditedProject.URL && uneditedProject.URL !== "" ? (
           <button
             ref={sourceCodeRef}
