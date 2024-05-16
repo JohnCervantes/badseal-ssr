@@ -70,7 +70,7 @@ export default function projects({ projects, error }) {
         <div className="sm:w-[85%] grid-layout mx-auto">
           {projectsVar.map((project) => {
             return (
-              <Link   href={`/projects/${project._id}`} key={project._id}>
+              <Link href={`/projects/${project._id}`} key={project._id} legacyBehavior>
                 <div ref={ref} className="project-card group animate-fade-in-up">
                   <div className="relative min-w-[170px] sm:min-w-[250px] h-full">
                     <Image

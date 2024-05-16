@@ -66,7 +66,7 @@ export default function blog({ posts, error }) {
       <div className="post-container">
         {postsVar.map((post) => {
           return (
-            <Link href={`/blog/${post._id}`} key={post._id}>
+            <Link href={`/blog/${post._id}`} key={post._id} legacyBehavior>
               <div ref={ref} className="post-card group animate-fade-in-up">
                 <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
                   <Image
@@ -109,7 +109,7 @@ export default function blog({ posts, error }) {
         </p>
         {postsVar.slice(0, 5).map((post) => {
           return (
-            <Link href={`/blog/${post._id}`} key={post._id}>
+            <Link href={`/blog/${post._id}`} key={post._id} legacyBehavior>
               <div className="flex h-[75px] p-1 group hover:cursor-pointer">
                 <div className="relative max-h-[75px] w-[150px]">
                   <Image

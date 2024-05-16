@@ -83,28 +83,28 @@ export default function Navigation() {
   function NavigationLink(props) {
     const { toggle } = props;
     return (
-      <Link href={`/${props.type}`}>
-        <a
-          className={`flex items-center mr-3 ${
-            router.pathname === `/${props.type}`
-              ? "text-black"
-              : "navigation-link"
-          }`}
-          onClick={() => {
-            setState({
-              icon: { ...RESET_ICON, [toggle]: true },
-              showSpinner: true,
-            });
-          }}
-        >
-          {props.children}
-          <FontAwesomeIcon
-            className={`navigation-icon ${props.type === "" ? "hidden" : ""}`}
-            icon={icon[toggle] ? faAngleUp : faAngleDown}
-            size="sm"
-          />
-        </a>
-      </Link>
+      (<Link
+        href={`/${props.type}`}
+        className={`flex items-center mr-3 ${
+          router.pathname === `/${props.type}`
+            ? "text-black"
+            : "navigation-link"
+        }`}
+        onClick={() => {
+          setState({
+            icon: { ...RESET_ICON, [toggle]: true },
+            showSpinner: true,
+          });
+        }}>
+
+        {props.children}
+        <FontAwesomeIcon
+          className={`navigation-icon ${props.type === "" ? "hidden" : ""}`}
+          icon={icon[toggle] ? faAngleUp : faAngleDown}
+          size="sm"
+        />
+
+      </Link>)
     );
   }
 }
