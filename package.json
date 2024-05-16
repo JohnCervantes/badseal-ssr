@@ -40,5 +40,8 @@
   },
   "resolutions": {
     "graphql-upload": "^11.0.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
