@@ -29,7 +29,6 @@ export default function blog({ posts, error }) {
     if (error) return console.error(error);
     if (posts) {
       setState({ posts });
-      console.log(posts,"post123");
     }
     setState({ showSpinner: false });
   }, []);
@@ -132,7 +131,7 @@ export default function blog({ posts, error }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   try {
     await connectMongo();
     const client = getStandAloneApolloClient();
@@ -150,7 +149,7 @@ export async function getStaticProps(context) {
       props: {
         posts: data.posts,
       },
-      revalidate: 1,
+      //revalidate: 1,
     };
   } catch (error) {
     return { props: { error: error.message } };

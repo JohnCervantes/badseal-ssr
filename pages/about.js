@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { setState, UPDATE_PROJECT } from "../operations/mutation";
 import connectMongo from "../dbConfig/mongoose";
 import Head from "next/head";
-import { getSignedUrl } from "../helpers/aws";
 import { getStandAloneApolloClient } from "./_app";
 import { useInView } from "react-intersection-observer";
 
@@ -169,71 +168,4 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  try {
-    await connectMongo();
-    const client = getStandAloneApolloClient();
-    const { data, error } = await client.query(
-      { query: ALL_PROJECTS },
-      {
-        fetchPolicy: "no-cache",
-      }
-    );
-
-    let projects = [...data.projects];
-    let i = 0;
-
-    if (!data) {
-      return { props: { projects: [], error } };
-    }
-
-    for (const project of projects) {
-      let imageUpdatedUrl = [];
-      for (const image of JSON.parse(project.image)) {
-        let imageKey = Object.keys(image)[0];
-        if (imageKey.includes("seal")) break;
-        const updatedPresignedURLCarousel = await getSignedUrl(imageKey);
-
-        imageUpdatedUrl.push({ [imageKey]: updatedPresignedURLCarousel });
-      }
-      if (imageUpdatedUrl.length > 0) {
-        let thumbnailKey = Object.keys(JSON.parse(project.thumbnail))[0];
-        const updatedPresignedURLThumbnail = await getSignedUrl(thumbnailKey);
-        projects[i] = {
-          ...projects[i],
-          image: JSON.stringify(imageUpdatedUrl),
-          thumbnail: JSON.stringify({
-            [thumbnailKey]: updatedPresignedURLThumbnail,
-          }),
-        };
-        client.mutate({
-          mutation: UPDATE_PROJECT,
-          variables: {
-            _id: projects[i]._id,
-            thumbnail: projects[i].thumbnail,
-            image: projects[i].image,
-            projectName: projects[i].projectName,
-            shortDescription: projects[i].shortDescription,
-            longDescription: projects[i].longDescription,
-            technology: projects[i].technology,
-            status: projects[i].status,
-            feature: projects[i].feature,
-            git: projects[i].git,
-          },
-        });
-      }
-      i++;
-    }
-
-    return {
-      props: {
-        projects,
-      },
-     // revalidate: 318400,
-    };
-  } catch (error) {
-    return { props: { error: error.message } };
-  }
 }
