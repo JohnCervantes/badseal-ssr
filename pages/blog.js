@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setState } from "../operations/mutation";
@@ -29,6 +29,7 @@ export default function blog({ posts, error }) {
     if (error) return console.error(error);
     if (posts) {
       setState({ posts });
+      console.log(posts,"post123");
     }
     setState({ showSpinner: false });
   }, []);
@@ -41,7 +42,7 @@ export default function blog({ posts, error }) {
           content="Blogs page of the portfolio website developed by John Cervantes."
         />
       </Head>
-      <div
+      {/* <div
         className={`flex justify-center items-center  absolute ${
           navbarOpen ? "top-52" : "top-28"
         } right-5 sm:top-28`}
@@ -62,7 +63,7 @@ export default function blog({ posts, error }) {
         >
           Add+
         </button>
-      </div>
+      </div> */}
       <div className="post-container">
         {postsVar.map((post) => {
           return (

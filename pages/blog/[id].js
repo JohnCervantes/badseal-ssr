@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { readState } from "../../operations/query";
 import { useQuery } from "@apollo/client";
 import { setState, updatePost } from "../../operations/mutation";

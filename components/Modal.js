@@ -10,7 +10,7 @@ import { RESET_MODAL, RESET_ICON } from "../cache";
 import { useQuery } from "@apollo/client";
 import { readState } from "../operations/query";
 import { useFormik } from "formik";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { uploadPhoto, getSignedUrl } from "../helpers/aws";
 
 function Modal() {

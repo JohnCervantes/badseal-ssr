@@ -17,7 +17,7 @@ export const ERROR_TOAST = {
 
 export const RESET_ICON = {
   resumeToggled: false,
-  projectsToggled: false,
+  aboutToggled: false,
   blogToggled: false,
   homeToggled: false
 };

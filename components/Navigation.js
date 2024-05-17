@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { setState } from "../operations/mutation";
 import {
@@ -50,13 +50,6 @@ export default function Navigation() {
             }
           >
             <div className="navbar-links  animate-fade-in">
-              <NavigationLink
-                // key={icon["projectsToggled"]}
-                type="projects"
-                toggle="projectsToggled"
-              >
-                Projects
-              </NavigationLink>
               <NavigationLink type="resume" toggle="resumeToggled">
                 Resume
               </NavigationLink>
@@ -66,6 +59,13 @@ export default function Navigation() {
                 toggle="blogToggled"
               >
                 Blog
+              </NavigationLink>
+              <NavigationLink
+                // key={icon["projectsToggled"]}
+                type="about"
+                toggle="aboutToggled"
+              >
+                About
               </NavigationLink>
             </div>
           </div>

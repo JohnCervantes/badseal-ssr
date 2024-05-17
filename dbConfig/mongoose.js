@@ -7,13 +7,11 @@ const connectMongo = async () => {
     if (connection.isConnected){
       return;
     }
-    const dbConnection = await mongoose.connect(process.env.DB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    });
+    const dbConnection = await mongoose.connect(process.env.DB_URI);
     connection.isConnected = dbConnection.connections[0].readyState;
+    
+    console.log('MongoDB database connection established successfully');
+
 
   } catch (err) {
     console.error(err);

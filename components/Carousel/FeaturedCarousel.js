@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { PrevButton, NextButton } from "./EmblaCarouselButtons";
 import { useRecursiveTimeout } from "./useRecursiveTimeout";
 import { useEmblaCarousel } from "embla-carousel/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const AUTOPLAY_INTERVAL = 10000;
 const PARALLAX_FACTOR = 0.8;

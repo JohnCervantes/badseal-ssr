@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useEmblaCarousel } from "embla-carousel/react";
 import { Thumb } from "./EmblaCarouselThumb";
-import Image from "next/image";
+import Image from "next/legacy/image";
 //import { mediaByIndex } from "../media";
 //import "../css/embla.css";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import { faArrowUp, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,12 +44,6 @@ export default function Footer() {
         <FontAwesomeIcon
           icon={faYoutubeSquare}
           onClick={() => window.open("https://www.youtube.com/user/vocalists5555/featured", "_blank")}
-          className="mr-2 cursor-pointer hover:text-white"
-          size="2x"
-        />
-        <FontAwesomeIcon
-          icon={faTwitterSquare}
-          onClick={() => window.open("https://twitter.com/vocalistx", "_blank")}
           className="mr-2 cursor-pointer hover:text-white"
           size="2x"
         />
