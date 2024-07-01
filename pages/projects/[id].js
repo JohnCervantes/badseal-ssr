@@ -100,12 +100,20 @@ export default function Project() {
         </div>
 
         <FeaturedEmblaCarousel projectImages={uneditedProject.image} />
-
+        {uneditedProject.URL && uneditedProject.URL !== "" ? (
+          <button
+            ref={sourceCodeRef}
+            className="animate-fade-in-up mt-5"
+            onClick={() => window.open(uneditedProject.URL, "_blank")}
+          >
+           View application <FontAwesomeIcon icon={faGlobe} size="lg" />
+          </button>
+        ) : undefined}
         <div className="text-left p-5 mb-10">
           <p
             ref={aboutRef}
             className={
-              "mt-10 mb-2 font-semibold text-3xl text-center text-green-700" +
+              "mt-7 mb-2 font-semibold text-3xl text-center text-green-700" +
               (aboutView
                 ? " delay-300 animate-fade-in-right-to-left"
                 : " invisible")
@@ -139,15 +147,6 @@ export default function Project() {
         >
           View source code <FontAwesomeIcon icon={faGithubSquare} size="lg" />
         </button> */}
-        {uneditedProject.URL && uneditedProject.URL !== "" ? (
-          <button
-            ref={sourceCodeRef}
-            className="animate-fade-in-up"
-            onClick={() => window.open(uneditedProject.URL, "_blank")}
-          >
-           View application <FontAwesomeIcon icon={faGlobe} size="lg" />
-          </button>
-        ) : undefined}
       </div>
     </div>
   );
