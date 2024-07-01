@@ -66,7 +66,7 @@ export async function uploadPhotos(images) {
 
 export function getSignedUrl(objectName) {
   var url = s3.getSignedUrl("getObject", {
-    Bucket: "badseal",
+    Bucket: "badseal1",
     Key: objectName,
     Expires: 600000,
   });

@@ -13,6 +13,6 @@ module.exports = {
     REACT_APP_LOCAL_GRAPHQL_URL: process.env.REACT_APP_LOCAL_GRAPHQL_URL
   },
   images: {
-    domains: ["","badseal.s3.us-west-2.amazonaws.com"],
+    domains: ["","badseal1.s3.us-west-2.amazonaws.com"],
   },
 };

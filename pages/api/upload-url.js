@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   const s3 = new aws.S3();
   const post = await s3.createPresignedPost({
-    Bucket: "badseal",
+    Bucket: "badseal1",
     Fields: {
       key: req.query.file,
     },
