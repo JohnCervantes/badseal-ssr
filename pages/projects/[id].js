@@ -80,12 +80,13 @@ export default function Project() {
         />
       </Head>
       <div className="relative bg-white w-[95%] shadow-md mx-auto text-center py-20 px-2">
-        <button
+        {/*this is the edit button in the project page*/}
+        {/* <button
           className="absolute top-3 right-5"
           onClick={() => setEditMode(true)}
         >
           Edit
-        </button>
+        </button> */}
         <div
           ref={titleRef}
           className={
