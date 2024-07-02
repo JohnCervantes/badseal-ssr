@@ -73,7 +73,7 @@ export default function Navigation() {
       </nav>
       <div
         className={
-          "absolute z-30 w-full h-[75px] bg-nav-wave " +
+          "absolute z-30 w-full h-[60px] bg-nav-wave " +
           (navbarOpen ? "top-36" : "top-12")
         }
       />
