@@ -68,14 +68,14 @@ export default function blog({ posts, error }) {
           return (
             <Link href={`/blog/${post._id}`} key={post._id} legacyBehavior>
               <div ref={ref} className="post-card group animate-fade-in-up">
-                <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
+                {/* <div className="relative group-hover:scale-x-105 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150 h-[150px] sm:h-[250px] w-full">
                   <Image
                     src={JSON.parse(post.banner)[Object.keys(JSON.parse(post.banner))[0]]}
                     layout="fill"
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
                   />
-                </div>
+                </div> */}
                 <div className="p-3 relative">
                   <p className="font-semibold text-2xl">{post.postName} </p>
                   <p className="flex font-light items-baseline text-green-100 ">
@@ -107,13 +107,14 @@ export default function blog({ posts, error }) {
         <p className="text-2xl text-center w-[150px] mx-auto m-1 text-white bg-[#c2b280]">
           Featured
         </p>
+
         {postsVar.slice(0, 5).map((post) => {
           return (
             <Link href={`/blog/${post._id}`} key={post._id} legacyBehavior>
               <div className="flex h-[75px] p-1 group hover:cursor-pointer">
                 <div className="relative max-h-[75px] w-[150px]">
                   <Image
-                    src={JSON.parse(post.banner)[Object.keys(JSON.parse(post.banner))[0]]}
+                    src="/defaultBanner.png"
                     layout="fill"
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
@@ -124,6 +125,7 @@ export default function blog({ posts, error }) {
                 </div>
               </div>
             </Link>
+            
           );
         })}
       </div>

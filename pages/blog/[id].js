@@ -82,7 +82,7 @@ export default function Post() {
           {new Date(Number(post.date)).toString().substring(0, 15)}
         </div>
 
-        <div className="relative w-[90%] sm:w-[55%] h-[200px] mx-auto">
+        {/* <div className="relative w-[90%] sm:w-[55%] h-[200px] mx-auto">
           <Image
             src={
               JSON.parse(uneditedPost.banner)[
@@ -91,7 +91,7 @@ export default function Post() {
             }
             layout="fill"
           />
-        </div>
+        </div> */}
 
         <div className="text-left px-5 py-10 whitespace-pre-wrap">
           <p>{uneditedPost.content}</p>
@@ -122,7 +122,7 @@ export default function Post() {
           ></textarea>
           <div className="divider" />
 
-          <div className="flex items-center px-2 justify-center w-[80%] bg-gray-300 mx-auto h-[250px]">
+          {/* <div className="flex items-center px-2 justify-center w-[80%] bg-gray-300 mx-auto h-[250px]">
             <Image
               src={
                 banner
@@ -133,7 +133,7 @@ export default function Post() {
               height="200px"
               unoptimized={true}
             />
-          </div>
+          </div> */}
           <input
             className="w-[70%] sm:w-[30%] mt-3"
             onClick={(e) => {
