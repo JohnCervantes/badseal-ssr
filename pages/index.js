@@ -87,16 +87,16 @@ export default function projects({ projects, error }) {
                       quality="100"
                     ></Image>
                   </div>
-                  <div className="relative break-words bg-white px-4 py-1">
-                    <p className="font-bold mb-3 text-xl text-center">
-                      {project.projectName}
+                  <div className="relative break-words bg-white px-2 py-1">
+                    <p className="font-bold text-lg text-center">
+                      {project.projectName }
                     </p>
-                    <div className="divider mb-1 sm:mb-3 mx-auto" />
+                    <div className="w-full divider m-0 sm:mb-3 " />
 
-                    <p className="font-semibold">{project.shortDescription}</p>
+                    <p className="font-semibold text-sm">{project.shortDescription}</p>
                     <div className="absolute bottom-1">
-                      <p className="font-light ">{project.technology}</p>
-                      <p className="font-light">Status: {project.status}</p>
+                      <p className="font-light text-xs ">{project.technology}</p>
+                      <p className="font-light text-xs">Status: {project.status}</p>
                     </div>
                   </div>
                 </div>
