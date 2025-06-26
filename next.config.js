@@ -13,6 +13,12 @@ module.exports = {
     REACT_APP_LOCAL_GRAPHQL_URL: process.env.REACT_APP_LOCAL_GRAPHQL_URL
   },
   images: {
-    domains: ["","badseal1.s3.us-west-2.amazonaws.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'badseal1.s3.us-west-2.amazonaws.com',
+        pathname: '/**',
+      }
+    ],
   },
 };

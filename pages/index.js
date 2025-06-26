@@ -111,7 +111,7 @@ export default function projects({ projects, error }) {
   }
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   try {
     await connectMongo();
     const client = getStandAloneApolloClient();
@@ -172,7 +172,7 @@ export async function getServerSideProps(context) {
       props: {
         projects,
       },
-      //revalidate: 318400,
+      revalidate: 60, // Revalidate every 60 seconds
     };
   } catch (error) {
     return { props: { error: error.message } };
