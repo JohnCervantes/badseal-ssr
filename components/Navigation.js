@@ -33,7 +33,7 @@ export default function Navigation() {
             <div className="title-container animate-fade-in">
               <Image src="/seal.png" height={20} width={50} quality="100" />
               <NavigationLink type="" toggle="homeToggled">
-                <p className="text-3xl">Badseal Studios</p>
+                <h1 className="text-3xl">Badseal Studios</h1>
               </NavigationLink>
             </div>
             <div
@@ -50,6 +50,9 @@ export default function Navigation() {
             }
           >
             <div className="navbar-links  animate-fade-in">
+              <NavigationLink type="" toggle="projectsToggled">
+                Projects
+              </NavigationLink>
               <NavigationLink type="resume" toggle="resumeToggled">
                 Resume
               </NavigationLink>
@@ -81,13 +84,14 @@ export default function Navigation() {
   );
 
   function NavigationLink(props) {
+    console.log(props, "props in NavigationLink");
     const { toggle } = props;
     return (
       (<Link
         href={`/${props.type}`}
         className={`flex items-center mr-3 ${
           router.pathname === `/${props.type}`
-            ? "text-black"
+            ? "text-blue-900 font-semibold"
             : "navigation-link"
         }`}
         onClick={() => {
@@ -99,7 +103,7 @@ export default function Navigation() {
 
         {props.children}
         <FontAwesomeIcon
-          className={`navigation-icon ${props.type === "" ? "hidden" : ""}`}
+          className={`navigation-icon ${props?.children?.props?.children === "Badseal Studios" ? "hidden" : ""}`}
           icon={icon[toggle] ? faAngleUp : faAngleDown}
           size="sm"
         />

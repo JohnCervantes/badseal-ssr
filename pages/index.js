@@ -88,15 +88,15 @@ export default function projects({ projects, error }) {
                     ></Image>
                   </div>
                   <div className="relative break-words bg-white px-2 py-1">
-                    <p className="font-bold text-lg text-center">
+                    <p className="font-bold text-2xl text-center">
                       {project.projectName }
                     </p>
                     <div className="w-full divider m-0 sm:mb-3 " />
 
                     <p className="font-semibold text-sm">{project.shortDescription}</p>
                     <div className="absolute bottom-1">
-                      <p className="font-light text-xs ">{project.technology}</p>
-                      <p className="font-light text-xs">Status: {project.status}</p>
+                      <p className="font-light text-xs mb-3 ">{project.technology}</p>
+                      {/* <p className="font-light text-xs">Status: {project.status}</p> */}
                     </div>
                   </div>
                 </div>

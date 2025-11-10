@@ -23,11 +23,11 @@
 }
 
 .navigation-link {
-  @apply hover:text-black;
+  @apply hover:text-blue-900;
 }
 
 .navbar-links {
-  @apply flex w-full h-auto sm:max-h-[32px] flex-col sm:flex-row sm:justify-end;
+  @apply flex w-full h-auto sm:max-h-[32px] flex-col sm:flex-row sm:justify-end ;
 }
 
 .title-container {
@@ -75,7 +75,7 @@ button {
 }
 
 .project-card {
-  @apply overflow-hidden container flex w-[350px] sm:w-[500px] h-[250px] border-2 my-3 shadow-lg rounded-lg transition
+  @apply overflow-hidden container flex w-[350px] sm:w-[500px] h-[230px] border-2 my-3 shadow-lg rounded-lg transition
   duration-100 ease-out
  hover:scale-105 cursor-pointer;
 }
