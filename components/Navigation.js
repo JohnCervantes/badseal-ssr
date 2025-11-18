@@ -91,7 +91,7 @@ export default function Navigation() {
         href={`/${props.type}`}
         className={`flex items-center mr-3 ${
           router.pathname === `/${props.type}`
-            ? "text-blue-900 font-semibold"
+            ? "text-blue-800 font-medium"
             : "navigation-link"
         }`}
         onClick={() => {
