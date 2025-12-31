@@ -31,9 +31,9 @@ export default function Navigation() {
         <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="w-full relative justify-between flex sm:w-auto sm:static sm:block sm:justify-start">
             <div className="title-container animate-fade-in">
-              <Image src="/seal.png" height={20} width={50} quality="100" />
+              <Image src="/seal.png" height={100} width={75} quality="100" />
               <NavigationLink type="" toggle="homeToggled">
-                <h1 className="text-3xl">Badseal Studios</h1>
+                <h1 className="text-3xl">Bad seal Studios</h1>
               </NavigationLink>
             </div>
             <div

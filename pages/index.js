@@ -71,16 +71,26 @@ export default function projects({ projects, error }) {
         <div className="sm:w-[85%] grid-layout mx-auto">
           {projectsVar.map((project) => {
             return (
-              <Link href={`/projects/${project._id}`} key={project._id} legacyBehavior>
-                <div ref={ref} className="project-card group animate-fade-in-up">
-                  <div className="relative min-w-[170px] sm:min-w-[250px] h-full">
+              <Link
+                href={`/projects/${project._id}`}
+                key={project._id}
+                legacyBehavior
+              >
+                <div
+                  ref={ref}
+                  className="project-card group animate-fade-in-up h-auto"
+                >
+                  <div className="relative min-w-[170px] sm:min-w-[250px] ">
                     <Image
                       className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
                       layout="fill"
+                      objectFit="cover"
                       src={
-                        JSON.parse(project.thumbnail)[
-                          Object.keys(JSON.parse(project.thumbnail))[0]
-                        ]
+                        project.thumbnail === ""
+                          ? "/seal.png"
+                          : JSON.parse(project.thumbnail)[
+                              Object.keys(JSON.parse(project.thumbnail))[0]
+                            ]
                       }
                       placeholder="blur"
                       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
@@ -89,15 +99,14 @@ export default function projects({ projects, error }) {
                   </div>
                   <div className="relative break-words bg-white px-2 py-1">
                     <p className="font-bold text-2xl text-center">
-                      {project.projectName }
+                      {project.projectName}
                     </p>
                     <div className="w-full divider m-0 sm:mb-3 " />
 
-                    <p className="font-semibold text-sm">{project.shortDescription}</p>
-                    <div className="absolute bottom-1">
-                      <p className="font-light text-xs mb-3 ">{project.technology}</p>
-                      {/* <p className="font-light text-xs">Status: {project.status}</p> */}
-                    </div>
+                    <p className="font-semibold text-sm mb-4">
+                      {project.shortDescription}
+                    </p>
+                    <p className="font-light text-xs ">{project.technology}</p>
                   </div>
                 </div>
               </Link>
@@ -124,7 +133,6 @@ export async function getStaticProps(context) {
 
     let projects = [...data.projects];
     let i = 0;
-
 
     if (!data) {
       return { props: { projects: [], error } };
