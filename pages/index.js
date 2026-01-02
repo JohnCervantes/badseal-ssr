@@ -11,6 +11,7 @@ import connectMongo from "../dbConfig/mongoose";
 import Head from "next/head";
 import { useInView } from "react-intersection-observer";
 import { getSignedUrl } from "../helpers/aws";
+import ProjectCard from "../components/ProjectCard";
 
 export default function projects({ projects, error }) {
   const {
@@ -70,47 +71,7 @@ export default function projects({ projects, error }) {
         </div> */}
         <div className="sm:w-[85%] grid-layout mx-auto">
           {projectsVar.map((project) => {
-            return (
-              <Link
-                href={`/projects/${project._id}`}
-                key={project._id}
-                legacyBehavior
-              >
-                <div
-                  ref={ref}
-                  className="project-card group animate-fade-in-up h-auto"
-                >
-                  <div className="relative min-w-[170px] sm:min-w-[250px] ">
-                    <Image
-                      className="group-hover:scale-x-110 group-hover:transition-all group-hover:ease-in-out group-hover:duration-150"
-                      layout="fill"
-                      objectFit="cover"
-                      src={
-                        project.thumbnail === ""
-                          ? "/seal.png"
-                          : JSON.parse(project.thumbnail)[
-                              Object.keys(JSON.parse(project.thumbnail))[0]
-                            ]
-                      }
-                      placeholder="blur"
-                      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
-                      quality="100"
-                    ></Image>
-                  </div>
-                  <div className="relative break-words bg-white px-2 py-1">
-                    <p className="font-bold text-2xl text-center">
-                      {project.projectName}
-                    </p>
-                    <div className="w-full divider m-0 sm:mb-3 " />
-
-                    <p className="font-semibold text-sm mb-4">
-                      {project.shortDescription}
-                    </p>
-                    <p className="font-light text-xs ">{project.technology}</p>
-                  </div>
-                </div>
-              </Link>
-            );
+            return <ProjectCard ref={ref} project={project}></ProjectCard>;
           })}
         </div>
       </div>
